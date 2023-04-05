@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo:jammy
+    container_name: mongo
+    restart: always
+    ports:
+      - 2717:27017
+    volumes:
+      - ./dbdata:/data/db
+  node:
+    build: .
+    restart: always
+    ports:
+      - 5000:3000
+    environment:
+      PORT: 3000
+      JWT_SECRET: jwtsecretkey
+      DB_URL: mongodb://mongo:27017
+      DB_NAME: cargoapp
+    depends_on:
+      - mongo
