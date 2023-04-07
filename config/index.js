@@ -5,4 +5,12 @@ module.exports = {
     name: process.env.DB_NAME,
     url: process.env.DB_URL,
   },
+  corsOptions: {
+    origin: [process.env.BASE_URL],
+    credentials: true,
+  },
+  mongoOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
 };

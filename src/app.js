@@ -1,16 +1,22 @@
 require("dotenv").config();
+const config = require("../config");
 const express = require("express");
 require("express-async-errors");
+
+const cors = require("cors");
+const auth = require("./middlewares/auth");
 const app = express();
 
-const config = require("../config");
+const { loadRoutes, connectDb } = require("./helpers");
 
-require("./helpers/connectDb");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+app.use(cors(config.corsOptions));
+app.use(auth);
 
-app.listen(config.port, () => {
-  console.log(`Listening on port ${config.port}...`);
+app.listen(config.port, async () => {
+  await connectDb();
+  loadRoutes(app);
+  console.log(`Server is running on port ${config.port}`);
 });
