@@ -1,0 +1,15 @@
+name: Docker Compose
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up Docker Compose
+      uses: docker/compose-cli-action@v0.1.1
+    - name: Build and start Docker Compose
+      run: docker compose up -d
