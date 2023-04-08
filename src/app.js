@@ -11,8 +11,18 @@ const { loadRoutes, connectDb } = require("./helpers");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// create ping route
-app.get("/ping", (req, res) => res.send("pong"));
+
+const counters = {};
+
+app.get("/ping", (req, res) => {
+  const ip = req.ip;
+  if (!counters[ip]) {
+    counters[ip] = 1;
+  } else {
+    counters[ip]++;
+  }
+  res.send(`Bu IP adresi (${ip}) ile ${counters[ip]} defa istek yapıldı.`);
+});
 
 app.use(cors(config.corsOptions));
 app.use(auth);
