@@ -1,17 +1,25 @@
-name: Setup Node
+name: Deploy to Ubuntu Server
+
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
-  compose:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
+    - name: Checkout code
       uses: actions/checkout@v2
-    - name: Setup Node
-      uses: actions/setup-node@v1
+
+    - name: SSH into Ubuntu Server and deploy
+      uses: appleboy/ssh-action@master
       with:
-        node-version: '18.x'
-    - name: Build and start Docker Compose
-      run: docker compose up -d
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        host: ${{ secrets.SSH_HOST }}
+        script: |
+          cd /root/cargo-backend
+          git pull
+          docker-compose down
+          docker-compose up -d
