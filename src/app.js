@@ -12,7 +12,7 @@ const { loadRoutes, connectDb } = require("./helpers");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // create ping route
-app.get("/ping", (req, res) => res.send("pongg2"));
+app.get("/ping", (req, res) => res.send("pong"));
 
 app.use(cors(config.corsOptions));
 app.use(auth);

@@ -17,6 +17,6 @@ services:
       PORT: 3000
       JWT_SECRET: jwtsecretkey
       DB_URL: mongodb://mongo:27017
-      DB_NAME: cargoapp
+      DB_NAME: cargo
     depends_on:
       - mongo
