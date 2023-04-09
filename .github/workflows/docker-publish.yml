@@ -28,5 +28,5 @@ jobs:
           find . \( -path './.git' -o -path './.github' \) -prune -o -print | cpio -pdm /root/gurbet/cargo-backend
           cd /root/gurbet/cargo-backend
           git add .
-          git commit -m ${{ github.event.head_commit.message }}
+          git commit -m "${{ github.event.head_commit.message }}"
           git push
