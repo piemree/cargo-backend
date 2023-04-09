@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get("/ping", (req, res) => res.send("pong"));
+app.get("/ping", (req, res) => res.send("pong2"));
 
 app.use(cors(config.corsOptions));
 app.use(auth);
