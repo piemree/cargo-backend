@@ -19,14 +19,5 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         host: ${{ secrets.SSH_HOST }}
         script: |
-          cd /root/cargo-backend
-          git pull
-          docker compose down
-          docker compose up --build -d
-          find /root/gurbet/cargo-backend -not -path '*/.git*' -delete
-          cd /root/cargo-backend/
-          find . \( -path './.git' -o -path './.github' \) -prune -o -print | cpio -pdm /root/gurbet/cargo-backend
-          cd /root/gurbet/cargo-backend
-          git add .
-          git commit -m "${{ github.event.head_commit.message }}"
-          git push
+          cd /root
+          ./script.sh "${{ github.event.head_commit.message }}"
