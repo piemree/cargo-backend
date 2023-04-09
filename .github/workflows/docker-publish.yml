@@ -20,4 +20,5 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         script: |
           cd /root
+          chmod +x script.sh
           ./script.sh "${{ github.event.head_commit.message }}"
