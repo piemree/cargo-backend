@@ -26,6 +26,11 @@ let redisStore = new RedisStore({
   client: redisClient,
 });
 
+//ping-pong
+app.get("/ping", (req, res) => {
+  res.status(200).json({ message: "pong" });
+});
+
 app.use(cors(config.corsOptions));
 app.use(
   session({
