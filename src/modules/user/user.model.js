@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
   email: {
@@ -54,7 +54,6 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
 
 // if password flield is not empty, hash the password
 UserSchema.pre("save", async function (next) {
@@ -66,7 +65,9 @@ UserSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// compare the password with the hashed password
-UserSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
+UserSchema.methods.matchPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
 };
+
+
+module.exports = mongoose.model("User", UserSchema);

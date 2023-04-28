@@ -1,25 +1,44 @@
 require("dotenv").config();
-const config = require("../config");
 const express = require("express");
 require("express-async-errors");
-
 const cors = require("cors");
 const auth = require("./middlewares/auth");
+const config = require("../config");
 const app = express();
+
+const session = require("express-session");
+const RedisStore = require("connect-redis").default;
+const redis = require("redis");
 
 const { loadRoutes, connectDb } = require("./helpers");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+let redisClient = redis.createClient(config.redisOptions);
+redisClient
+  .connect()
+  .then(() => console.log("Connected to Redis"))
+  .catch((err) => console.log("Could not connect to Redis", err));
 
-app.get("/ping", (req, res) => res.send("pong1"));
+let redisStore = new RedisStore({
+  client: redisClient,
+});
 
 app.use(cors(config.corsOptions));
+app.use(
+  session({
+    store: redisStore,
+    secret: config.sessionSecret,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(auth);
 
-app.listen(config.port, async () => {
+const nodeApp = app.listen(config.port, async () => {
   await connectDb();
-  loadRoutes(app);
-  console.log(`Server is running on port ${config.port}`);
+  await loadRoutes(app);
+
+  console.log(`Server is running on port ${nodeApp.address().port}`);
 });

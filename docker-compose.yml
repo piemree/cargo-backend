@@ -5,18 +5,28 @@ services:
     container_name: mongo
     restart: always
     ports:
-      - 2717:27017
+      - ${MONGO_PORT}:${MONGO_PORT}
     volumes:
       - ./dbdata:/data/db
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
   node:
     build: .
     restart: always
     ports:
-      - 5000:3000
+      - ${PORT}:${PORT}
     environment:
-      PORT: 3000
-      JWT_SECRET: jwtsecretkey
-      DB_URL: mongodb://mongo:27017
-      DB_NAME: cargo
+      NODE_ENV: ${NODE_ENV}
+      PORT: ${PORT}
+      JWT_SECRET: ${JWT_SECRET}
+      SESSION_SECRET: ${SESSION_SECRET}
+      DB_URL: ${DB_URL}
+      DB_NAME: ${DB_NAME}
+      REDIS_URL: ${REDIS_URL}
     depends_on:
       - mongo
+      - redis
