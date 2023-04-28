@@ -3,7 +3,6 @@ const personelService = require("./personel.service");
 
 async function getAllPersonels(req, res) {
   const personels = await personelService.findAll();
-  console.log(req.session);
   res.status(200).json(personels);
 }
 

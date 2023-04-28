@@ -1,20 +1,21 @@
 const redis = require("redis");
 const config = require("../../config");
+const logger = require("../logger");
 
 function connectRedis() {
   return new Promise((resolve, reject) => {
     const client = redis.createClient(config.redisOptions);
     client.on("ready", () => {
-      console.log("Redis is ready");
+      logger.info("Redis is ready");
     });
 
     client.on("connect", () => {
-      console.log("Connected to Redis");
+      logger.info("Connected to Redis");
       resolve(client);
     });
 
     client.on("error", (err) => {
-      console.log(`Error connecting to Redis ${err}`);
+      logger.error(err);
       reject(err);
     });
   });

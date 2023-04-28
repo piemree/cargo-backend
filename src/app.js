@@ -11,6 +11,7 @@ const RedisStore = require("connect-redis").default;
 const redis = require("redis");
 
 const { loadRoutes, connectDb } = require("./helpers");
+const logger = require("./logger");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,8 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 let redisClient = redis.createClient(config.redisOptions);
 redisClient
   .connect()
-  .then(() => console.log("Connected to Redis"))
-  .catch((err) => console.log("Could not connect to Redis", err));
+  .then(() => logger.info("Connected to Redis"))
+  .catch((err) => logger.error(err));
 
 let redisStore = new RedisStore({
   client: redisClient,

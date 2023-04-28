@@ -19,6 +19,9 @@ services:
     restart: always
     ports:
       - ${PORT}:${PORT}
+    # add logs volume
+    volumes:
+      - ./logs:/usr/src/app/logs
     environment:
       NODE_ENV: ${NODE_ENV}
       PORT: ${PORT}
