@@ -6,42 +6,14 @@ const auth = require("./middlewares/auth");
 const config = require("../config");
 const app = express();
 
-const session = require("express-session");
-const RedisStore = require("connect-redis").default;
-const redis = require("redis");
-
-const { loadRoutes, connectDb } = require("./helpers");
-const logger = require("./logger");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-let redisClient = redis.createClient(config.redisOptions);
-redisClient
-  .connect()
-  .then(() => logger.info("Connected to Redis"))
-  .catch((err) => logger.error(err));
-
-let redisStore = new RedisStore({
-  client: redisClient,
-});
-
-//ping-pong
-app.get("/ping", (req, res) => {
-  res.status(200).json({ message: "pong" });
-});
-
 app.use(cors(config.corsOptions));
-app.use(
-  session({
-    store: redisStore,
-    secret: config.sessionSecret,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+
 app.use(auth);
 
+const { loadRoutes, connectDb } = require("./helpers");
 const nodeApp = app.listen(config.port, async () => {
   await connectDb();
   await loadRoutes(app);

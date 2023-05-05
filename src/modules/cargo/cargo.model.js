@@ -59,6 +59,7 @@ const CargoSchema = new Schema({
     type: String,
     required: true,
     enum: ["beklemede", "yolda", "teslim edildi"],
+    default: "beklemede",
   },
   content: {
     type: String,
@@ -82,13 +83,13 @@ const CargoSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Cargo", CargoSchema);
-
-CargoSchema.pre("save", function (next) {
+// every new cargo created add that cargo to the registerBranch's cargos array
+CargoSchema.post("save", async function () {
+  console.log("post save");
   const cargo = this;
-  const desi =
-    ((cargo.height + cargo.width + cargo.length) * cargo.weight) / 6000;
-  const price = desi * 3;
-  cargo.totalPrice = price;
-  next();
+  const branch = await branchModel.findById(cargo.registerBranch);
+  branch.cargos.push(cargo._id);
+  await branch.save();
 });
+
+module.exports = mongoose.model("Cargo", CargoSchema);

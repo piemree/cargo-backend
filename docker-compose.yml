@@ -8,12 +8,6 @@ services:
       - ${MONGO_PORT}:${MONGO_PORT}
     volumes:
       - ./dbdata:/data/db
-  redis:
-    image: redis:alpine
-    container_name: redis
-    restart: always
-    ports:
-      - ${REDIS_PORT}:${REDIS_PORT}
   node:
     build: .
     restart: always
@@ -32,4 +26,3 @@ services:
       REDIS_URL: ${REDIS_URL}
     depends_on:
       - mongo
-      - redis

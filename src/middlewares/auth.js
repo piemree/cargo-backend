@@ -5,15 +5,18 @@ const jwt = require("jsonwebtoken");
 module.exports = async function (req, res, next) {
   const noAuthRoutes = config.noAuthRoutes;
   const pathname = req._parsedUrl.pathname;
-
   const isNoAuthRoute = noAuthRoutes.includes(pathname);
   if (isNoAuthRoute) return next();
+  // get bearer token from header
+  const token = req.headers.authorization?.split(" ")[1];
 
-  const token = req.session.token;
-  if (!token) return next(new AppError("Unauthorized", 401));
-
-  const decoded = jwt.verify(token, config.jwtSecret);
-  req.user = decoded;
-  
-  next();
+  if (!token) throw new AppError("Unauthorized", 401);
+  // verify token
+  try {
+    const decoded = jwt.verify(token, config.jwtSecret);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    throw new AppError("Unauthorized", 401);
+  }
 };

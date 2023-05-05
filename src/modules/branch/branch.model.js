@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Personel = require("../personel/personel.model");
 
 const BranchSchema = new Schema({
   name: {
@@ -22,19 +21,6 @@ const BranchSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Personel",
-      unique: true,
-      validate: {
-        validator: function (v) {
-          Personel.findById(v).then((personel) => {
-            if (personel.type === "branchPersonel") {
-              return true;
-            } else {
-              return false;
-            }
-          });
-        },
-        message: "Personel type must be branchPersonel",
-      },
     },
   ],
   cargos: [

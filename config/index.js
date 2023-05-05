@@ -4,7 +4,7 @@ module.exports = {
       ? process.env.PORT
       : process.env.DEV_PORT,
   jwtSecret: process.env.JWT_SECRET,
-  sessionSecret: process.env.SESSION_SECRET,
+  sessionSecret: "process.env.SESSION_SECRET",
   database: {
     name: process.env.DB_NAME,
     url:
@@ -17,12 +17,13 @@ module.exports = {
     branchPersonel: "branchPersonel",
     transportPersonel: "transportPersonel",
     customerServicePersonel: "customerServicePersonel",
+    customer: "customer",
   },
   jwtOptions: {
     expiresIn: "1d",
   },
   corsOptions: {
-    origin: [process.env.BASE_URL],
+    origin: "*",
     credentials: true,
   },
   mongoOptions: {
@@ -39,6 +40,5 @@ module.exports = {
     "/api/auth/customer/login",
     "/api/auth/customer/register",
     "/api/auth/personel/login",
-    "/api/auth/personel/register",
   ],
 };

@@ -15,6 +15,8 @@ async function create(personel = {}) {
   return newPersonel;
 }
 
+
+
 module.exports = {
   findOne,
   findAll,

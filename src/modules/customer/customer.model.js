@@ -6,10 +6,13 @@ const CustomerSchema = new Schema({
   email: {
     type: String,
     unique: true,
+    required: true,
   },
   password: {
     type: String,
     minlength: 6,
+    maxlength: 16,
+    required: true,
   },
   name: {
     type: String,
@@ -23,11 +26,21 @@ const CustomerSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    // leng must be 11
+    minlength: 11,
+    maxlength: 11,
   },
   phone: {
     type: String,
     required: true,
     unique: true,
+    minlength: 10,
+    maxlength: 10,
+  },
+  role: {
+    type: String,
+    enum: ["customer"],
+    default: "customer",
   },
   createdAt: {
     type: Date,
