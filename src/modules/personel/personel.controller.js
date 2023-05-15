@@ -14,7 +14,23 @@ async function addBranchPersonel(req, res) {
   res.status(201).json(personel);
 }
 
+async function assignVehicleToPersonel(req, res) {
+  const { personelId, vehicleId } = req.body;
+  const personel = await personelService.updateOne(
+    {
+      _id: personelId,
+      role: roles.transportPersonel,
+    },
+    {
+      vehicle: vehicleId,
+    }
+  );
+
+  res.status(200).json(personel);
+}
+
 module.exports = {
   getAllPersonels,
   addBranchPersonel,
+  assignVehicleToPersonel,
 };

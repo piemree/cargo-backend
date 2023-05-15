@@ -29,6 +29,12 @@ const BranchSchema = new Schema({
       ref: "Cargo",
     },
   ],
+  waitingCargos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Cargo",
+    },
+  ],
   isActive: {
     type: Boolean,
     default: true,

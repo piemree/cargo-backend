@@ -17,13 +17,24 @@ async function findById(id) {
 }
 
 async function addPersonels(branchId, personelIds) {
-  const branch = await branchModel.findById(branchId);
-  branch.personels.push(...personelIds);
-  return await branch.save();
+  return await branchModel.findOneAndUpdate(
+    { _id: branchId },
+    { $push: { personels: personelIds } },
+    { new: true }
+  );
 }
 // find branch by personel id
 async function findBranchByPersonelId(personelId) {
   return await branchModel.findOne({ personels: personelId });
+}
+
+async function updateOne(id, updateBody) {
+  return await branchModel.updateOne({ _id: id }, updateBody);
+}
+
+//update by personel id
+async function updateByPersonelId(personelId, updateBody) {
+  return await branchModel.updateOne({ personels: personelId }, updateBody);
 }
 module.exports = {
   create,
@@ -32,4 +43,6 @@ module.exports = {
   findById,
   addPersonels,
   findBranchByPersonelId,
+  updateOne,
+  updateByPersonelId,
 };

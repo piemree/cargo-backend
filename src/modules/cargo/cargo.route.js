@@ -9,11 +9,33 @@ router.post(
   allowedRoles([roles.branchPersonel]),
   cargoController.createCargo
 );
+
 // getAllSendedCargos
 router.get(
   "/getMySendedCargos",
   allowedRoles([roles.customer]),
   cargoController.getMySendedCargos
+);
+
+// give cargo to vehicle
+router.post(
+  "/giveCargosToVehicle",
+  allowedRoles([roles.branchPersonel]),
+  cargoController.giveCargosToVehicle
+);
+
+// give cargo to branch
+router.post(
+  "/giveCargosToBranch",
+  allowedRoles([roles.transportPersonel]),
+  cargoController.giveCargosToBranch
+);
+
+//giveCargoToCustomer
+router.post(
+  "/giveCargoToCustomer",
+  allowedRoles([roles.branchPersonel]),
+  cargoController.giveCargoToCustomer
 );
 
 module.exports = router;

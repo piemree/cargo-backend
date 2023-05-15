@@ -5,14 +5,11 @@ const Schema = mongoose.Schema;
 const CustomerSchema = new Schema({
   email: {
     type: String,
-    unique: true,
-    required: true,
   },
   password: {
     type: String,
     minlength: 6,
     maxlength: 16,
-    required: true,
   },
   name: {
     type: String,
@@ -26,7 +23,6 @@ const CustomerSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    // leng must be 11
     minlength: 11,
     maxlength: 11,
   },
@@ -54,9 +50,8 @@ const CustomerSchema = new Schema({
 
 CustomerSchema.pre("save", async function (next) {
   if (!this.isModified("password") || !this.password) {
-    return next();
+    this.password = this.tcNo;
   }
-
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });

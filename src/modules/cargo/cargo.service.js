@@ -5,12 +5,7 @@ async function create(cargo) {
 }
 
 async function find(query) {
-  return await cargoModel
-    .find(query)
-    .populate("sender", "name surname")
-    .populate("receiver", "name surname")
-    .populate("registerBranch", "name")
-    .populate("targetBranch", "name");
+  return await cargoModel.find(query);
 }
 
 async function findOne(query) {
@@ -31,9 +26,19 @@ async function findById(id) {
     .populate("targetBranch");
 }
 
+async function updateOne(id, updateBody) {
+  return await cargoModel.updateOne({ _id: id }, updateBody);
+}
+
+async function updateMany(ids, updateBody) {
+  return await cargoModel.updateMany({ _id: { $in: ids } }, updateBody);
+}
+
 module.exports = {
   create,
   find,
   findOne,
   findById,
+  updateOne,
+  updateMany,
 };

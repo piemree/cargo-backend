@@ -51,22 +51,6 @@ const PersonelSchema = new Schema({
       },
     },
   },
-  branch: {
-    // if type is branchPersonel, branch is required
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Branch",
-    validate: {
-      validator: async function (v) {
-        if (this.role === "branchPersonel") {
-          const branch = await branchModel.findById(v);
-          if (branch) return true;
-          else return false;
-        } else {
-          return v === null;
-        }
-      },
-    },
-  },
   createdAt: {
     type: Date,
     default: Date.now,

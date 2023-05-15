@@ -1,24 +1,34 @@
 const personelModel = require("./personel.model");
 
 async function findOne(query) {
-  const personel = await personelModel.findOne(query);
-  return personel;
+  return await personelModel.findOne(query);
+}
+
+async function findById(id) {
+  return await personelModel.findById(id);
 }
 
 async function findAll() {
-  const personels = await personelModel.find().select("-password");
-  return personels;
+  return await personelModel.find().select("-password");
 }
 
 async function create(personel = {}) {
-  const newPersonel = await personelModel.create(personel);
-  return newPersonel;
+  return await personelModel.create(personel);
 }
 
+async function findByIdAndUpdate(id, updateBody) {
+  return await personelModel.findByIdAndUpdate(id, updateBody);
+}
 
+async function updateOne(query, updateBody) {
+  return await personelModel.updateOne(query, updateBody);
+}
 
 module.exports = {
   findOne,
   findAll,
   create,
+  findById,
+  findByIdAndUpdate,
+  updateOne,
 };

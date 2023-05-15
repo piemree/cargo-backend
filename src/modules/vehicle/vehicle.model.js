@@ -6,11 +6,7 @@ const VehicleSchema = new Schema({
     type: String,
     required: true,
   },
-  cargoCapacity: {
-    type: Number,
-    required: true,
-  },
-  cargoos: [
+  cargos: [
     {
       type: Schema.Types.ObjectId,
       ref: "Cargo",

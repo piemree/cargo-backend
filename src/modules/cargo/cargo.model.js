@@ -23,6 +23,10 @@ const CargoSchema = new Schema({
     ref: "Customer",
     required: true,
   },
+  vehicle: {
+    type: Schema.Types.ObjectId,
+    ref: "Vehicle",
+  },
   height: {
     type: Number,
     required: true,
@@ -58,16 +62,12 @@ const CargoSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ["beklemede", "yolda", "teslim edildi"],
+    enum: ["beklemede", "yolda", "subede", "teslim edildi"],
     default: "beklemede",
   },
   content: {
     type: String,
     required: true,
-  },
-  isPaid: {
-    type: Boolean,
-    default: false,
   },
   wasDelivered: {
     type: Boolean,

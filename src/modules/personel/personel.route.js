@@ -15,5 +15,10 @@ router.post(
   allowedRoles([roles.admin]),
   personelController.addBranchPersonel
 );
-// updatePersonel
+// add vehicle to personel
+router.put(
+  "/assignVehicleToPersonel",
+  allowedRoles([roles.admin]),
+  personelController.assignVehicleToPersonel
+);
 module.exports = router;
