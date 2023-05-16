@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "8a7fdadc-c57e-4f39-9d3f-249db328a285",
+		"name": "Cargo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18925674"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"xpokales@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"name\":\"emre\",\r\n    \"surname\":\"demir\",\r\n    \"tcNo\":\"12345678910\",\r\n    \"phone\":\"0543965169\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/customer/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"customer",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Personel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sube2\",\r\n    \"surname\": \"personel\",\r\n    \"tcNo\": \"34765135555\",\r\n    \"email\": \"xpokal@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"role\": \"branchPersonel\",\r\n    \"branch\": \"645d6e22933ac903256cb5c0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/personel/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"personel",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"TOKEN\",response?.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"xpokales@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/customer/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Personel Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"\r",
+									"pm.environment.set(\"TOKEN\",response.data?.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/personel/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"personel",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Personel",
+			"item": [
+				{
+					"name": "Get All Personels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/personel/getAllPersonels",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"personel",
+								"getAllPersonels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Vehicle To Personel",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personelId\":\"645d6da5933ac903256cb5be\",\r\n    \"vehicleId\":\"645fd8f564806b73eead5916\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/personel/assignVehicleToPersonel",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"personel",
+								"assignVehicleToPersonel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"item": [
+				{
+					"name": "Create Branch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"adana merkez sube\",\r\n    \"address\": 519909,\r\n    \"phone\": \"2555525\",\r\n    \"personels\": [],\r\n    \"cargos\": [],\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/branch/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"branch",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Branch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/branch",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Personels to Branch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"branchId\":\"645fe3c47933dcfb953bc3c5\",\r\n    \"personelIds\":[\r\n        \"645d6e87933ac903256cb5c8\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/branch/addPersonels",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"branch",
+								"addPersonels"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Get Cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Districts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/district?il_id=1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"district"
+							],
+							"query": [
+								{
+									"key": "il_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Neighborhood",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/neighborhood?il_id=1&ilce_id=1757",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"neighborhood"
+							],
+							"query": [
+								{
+									"key": "il_id",
+									"value": "1"
+								},
+								{
+									"key": "ilce_id",
+									"value": "1757"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Streets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/street?il_id=1&ilce_id=1757&mahalle_id=176939",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"street"
+							],
+							"query": [
+								{
+									"key": "il_id",
+									"value": "1"
+								},
+								{
+									"key": "ilce_id",
+									"value": "1757"
+								},
+								{
+									"key": "mahalle_id",
+									"value": "176939"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cargo",
+			"item": [
+				{
+					"name": "Create Cargo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sender\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"phone\": \"5439665478\",\r\n        \"tcNo\": \"34587456665\"\r\n    },\r\n    \"receiver\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"phone\": \"5439665474\",\r\n        \"tcNo\": \"34587456645\"\r\n    },\r\n    \"targetBranch\": \"6453bc8387b91412f9cb8075\",\r\n    \"location\": 519909,\r\n    \"content\": \"1 cift terlik\",\r\n    \"totalPrice\": 50,\r\n    \"height\": 10,\r\n    \"weight\": 500,\r\n    \"length\": 30,\r\n    \"width\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/cargo/create",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"cargo",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Send Cargos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/cargo/getMySendedCargos",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"cargo",
+								"getMySendedCargos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Give Cargos to Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cargoIds\":[\r\n        \"645fe629bb8b8f741dab269d\"\r\n    ],\r\n    \"vehicleId\":\"645fd8f564806b73eead5916\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/cargo/giveCargosToVehicle",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"cargo",
+								"giveCargosToVehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Give Cargos To Branch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"branchId\": \"645fe3c47933dcfb953bc3c5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/cargo/giveCargosToBranch",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"cargo",
+								"giveCargosToBranch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "Create Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"licensePlate\":\"16bv42\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/vehicle/createVehicle",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"vehicle",
+								"createVehicle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
