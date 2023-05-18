@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 const CustomerSchema = new Schema({
   email: {
     type: String,
+    unique: true,
+    sparse: true,
   },
   password: {
     type: String,

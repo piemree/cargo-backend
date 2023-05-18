@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const branchModel = require("../branch/branch.model");
+const AppError = require("../../error/AppError");
 const Schema = mongoose.Schema;
 
 const CargoSchema = new Schema({
@@ -69,15 +70,6 @@ const CargoSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-});
-
-// every new cargo created add that cargo to the registerBranch's cargos array
-CargoSchema.post("save", async function () {
-  console.log("post save");
-  const cargo = this;
-  const branch = await branchModel.findById(cargo.registerBranch);
-  branch.cargos.push(cargo._id);
-  await branch.save();
 });
 
 module.exports = mongoose.model("Cargo", CargoSchema);

@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const vehicleModel = require("../vehicle/vehicle.model");
-const branchModel = require("../branch/branch.model");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
@@ -8,6 +6,7 @@ const PersonelSchema = new Schema({
   email: {
     type: String,
     unique: true,
+    required: true,
   },
   password: {
     type: String,
@@ -39,26 +38,10 @@ const PersonelSchema = new Schema({
   vehicle: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Vehicle",
-    validate: {
-      validator: async function (v) {
-        if (this.role === "transportPersonel") {
-          const vehicle = await vehicleModel.findById(v);
-          return vehicle ? true : false;
-        } else return v === null;
-      },
-    },
   },
   branch: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Branch",
-    validate: {
-      validator: async function (v) {
-        if (this.role === "branchPersonel") {
-          const branch = await branchModel.findById(v);
-          return branch ? true : false;
-        } else return v === null;
-      },
-    },
   },
   createdAt: {
     type: Date,
@@ -71,9 +54,7 @@ const PersonelSchema = new Schema({
 });
 
 PersonelSchema.pre("save", async function (next) {
-  if (!this.isModified("password") || !this.password) {
-    return next();
-  }
+  if (!this.isModified("password")) return next();
 
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);

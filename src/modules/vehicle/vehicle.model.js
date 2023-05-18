@@ -1,17 +1,11 @@
 const mongoose = require("mongoose");
-const personelModel = require("../personel/personel.model");
+
 const Schema = mongoose.Schema;
 
 const VehicleSchema = new Schema({
   driver: {
     type: Schema.Types.ObjectId,
     ref: "Personel",
-    validate: {
-      validator: async function (v) {
-        const personel = await personelModel.findById(v);
-        return personel && personel.role === "transportPersonel";
-      },
-    },
   },
   licensePlate: {
     type: String,
@@ -32,5 +26,6 @@ const VehicleSchema = new Schema({
     default: Date.now,
   },
 });
+
 
 module.exports = mongoose.model("Vehicle", VehicleSchema);

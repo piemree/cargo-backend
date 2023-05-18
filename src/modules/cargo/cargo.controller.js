@@ -25,8 +25,8 @@ async function createCargo(req, res) {
     cargo.receiver = newReceiver._id;
   }
 
-  cargo.sender = sender._id;
-  cargo.receiver = receiver._id;
+  if (sender) cargo.sender = sender._id;
+  if (receiver) cargo.receiver = receiver._id;
 
   const createdCargo = await cargoService.create(cargo);
 
