@@ -19,7 +19,7 @@ async function findById(id) {
 async function addPersonels(branchId, personelIds) {
   return await branchModel.findOneAndUpdate(
     { _id: branchId },
-    { $set: { personels: personelIds } },
+    { $addToSet: { personels: { $each: personelIds } } },
     { new: true }
   );
 }
