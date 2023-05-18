@@ -33,7 +33,7 @@ async function personelRegister(req, res) {
 
   const newPersonel = await personelService.create(data);
   if (newPersonel.branch) {
-    await branchService.addPersonels(personel.branch, [newPersonel._id]);
+    await branchService.addPersonels(newPersonel.branch, [newPersonel._id]);
   }
 
   if (newPersonel.vehicle) {
