@@ -5,7 +5,12 @@ async function create(cargo) {
 }
 
 async function find(query) {
-  return await cargoModel.find(query);
+  return await cargoModel
+    .find(query)
+    .populate("sender")
+    .populate("receiver")
+    .populate("registerBranch")
+    .populate("targetBranch");
 }
 
 async function findOne(query) {

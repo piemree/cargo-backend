@@ -16,6 +16,6 @@ router.post(
   branchController.addPersonels
 );
 
-router.get("/", allowedRoles([roles.admin]), branchController.getAllBranches);
+router.get("/getAllBranches", allowedRoles([roles.admin]), branchController.getAllBranches);
 //test
 module.exports = router;

@@ -43,11 +43,20 @@ const PersonelSchema = new Schema({
       validator: async function (v) {
         if (this.role === "transportPersonel") {
           const vehicle = await vehicleModel.findById(v);
-          if (vehicle) return true;
-          else return false;
-        } else {
-          return v === null;
-        }
+          return vehicle ? true : false;
+        } else return v === null;
+      },
+    },
+  },
+  branch: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Branch",
+    validate: {
+      validator: async function (v) {
+        if (this.role === "branchPersonel") {
+          const branch = await branchModel.findById(v);
+          return branch ? true : false;
+        } else return v === null;
       },
     },
   },

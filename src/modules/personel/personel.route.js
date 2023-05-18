@@ -9,12 +9,6 @@ router.get(
   allowedRoles([roles.admin]),
   personelController.getAllPersonels
 );
-// addPersonel
-router.post(
-  "/addBranchPersonel",
-  allowedRoles([roles.admin]),
-  personelController.addBranchPersonel
-);
 // add vehicle to personel
 router.put(
   "/assignVehicleToPersonel",

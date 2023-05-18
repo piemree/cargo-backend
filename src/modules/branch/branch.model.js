@@ -7,10 +7,8 @@ const BranchSchema = new Schema({
     required: true,
   },
   address: {
-    type: Number,
-    ref: "Street",
-    required: true,
-    unique: true,
+    type: String,
+    require: true,
   },
   phone: {
     type: String,
@@ -21,6 +19,12 @@ const BranchSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Personel",
+      validate: {
+        validator: async function (v) {
+          const personel = await personelModel.findById(v);
+          return personel && personel.role === "branchPersonel";
+        },
+      },
     },
   ],
   cargos: [

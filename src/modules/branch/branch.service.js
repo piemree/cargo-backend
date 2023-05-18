@@ -19,7 +19,7 @@ async function findById(id) {
 async function addPersonels(branchId, personelIds) {
   return await branchModel.findOneAndUpdate(
     { _id: branchId },
-    { $push: { personels: personelIds } },
+    { $set: { personels: personelIds } },
     { new: true }
   );
 }
@@ -36,6 +36,14 @@ async function updateOne(id, updateBody) {
 async function updateByPersonelId(personelId, updateBody) {
   return await branchModel.updateOne({ personels: personelId }, updateBody);
 }
+
+async function removePersonelsFromAllBranches(excludeBranchId, personelIds) {
+  return await branchModel.updateMany(
+    { personels: { $in: personelIds }, _id: { $ne: excludeBranchId } },
+    { $pullAll: { personels: personelIds } }
+  );
+}
+
 module.exports = {
   create,
   find,
@@ -45,4 +53,5 @@ module.exports = {
   findBranchByPersonelId,
   updateOne,
   updateByPersonelId,
+  removePersonelsFromAllBranches,
 };

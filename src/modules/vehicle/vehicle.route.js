@@ -9,5 +9,19 @@ router.post(
   allowedRoles([roles.admin]),
   vehicleController.createVehicle
 );
-// updatevehicle
+
+// get all vehicles
+router.get(
+  "/getAllVehicles",
+  allowedRoles([roles.admin]),
+  vehicleController.getAllVehicles
+);
+
+
+// assign vehicle to personel
+router.post(
+  "/assignVehicleToPersonel",
+  allowedRoles([roles.admin]),
+  vehicleController.assignVehicleToPersonel
+);
 module.exports = router;

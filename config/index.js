@@ -30,12 +30,6 @@ module.exports = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  redisOptions: {
-    url:
-      process.env.NODE_ENV === "production"
-        ? process.env.REDIS_URL
-        : process.env.DEV_REDIS_URL,
-  },
   noAuthRoutes: [
     "/api/auth/customer/login",
     "/api/auth/customer/register",

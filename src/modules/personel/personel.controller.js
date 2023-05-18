@@ -1,22 +1,21 @@
 const { roles } = require("../../../config");
 const personelService = require("./personel.service");
+const vehicleService = require("../vehicle/vehicle.service");
 
 async function getAllPersonels(req, res) {
-  const personels = await personelService.findAll();
-  res.status(200).json(personels);
-}
-
-async function addBranchPersonel(req, res) {
-  const personel = await personelService.create({
-    ...req.body,
-    role: roles.branchPersonel,
+  const query = req.query;
+  const personels = await personelService.findAll({
+    ...query,
   });
-  res.status(201).json(personel);
+  res.status(200).json({
+    success: true,
+    data: personels,
+  });
 }
 
 async function assignVehicleToPersonel(req, res) {
   const { personelId, vehicleId } = req.body;
-  const personel = await personelService.updateOne(
+  const updatePersonelRequest = personelService.updateOne(
     {
       _id: personelId,
       role: roles.transportPersonel,
@@ -26,11 +25,18 @@ async function assignVehicleToPersonel(req, res) {
     }
   );
 
-  res.status(200).json(personel);
+  const updateVehicleRequest = vehicleService.updateOne(vehicleId, {
+    driver: personelId,
+  });
+
+  await Promise.all([updatePersonelRequest, updateVehicleRequest]);
+
+  res.status(200).json({
+    success: true,
+  });
 }
 
 module.exports = {
   getAllPersonels,
-  addBranchPersonel,
   assignVehicleToPersonel,
 };

@@ -47,18 +47,6 @@ const CargoSchema = new Schema({
     type: Number,
     required: true,
   },
-  location: {
-    type: Number,
-    ref: "Street",
-    required: true,
-    validate: {
-      validator: async function (v) {
-        const branch = await branchModel.find({ address: v });
-        if (branch) return true;
-        else return false;
-      },
-    },
-  },
   status: {
     type: String,
     required: true,

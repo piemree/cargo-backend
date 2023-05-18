@@ -2,6 +2,7 @@ const config = require("../../../config");
 const AppError = require("../../error/AppError");
 const personelService = require("../personel/personel.service");
 const customerService = require("../customer/customer.service");
+const branchService = require("../branch/branch.service");
 const jwt = require("jsonwebtoken");
 
 async function personelLogin(req, res) {
@@ -12,17 +13,12 @@ async function personelLogin(req, res) {
   const isPasswordValid = await personel.matchPassword(password);
   if (!isPasswordValid) throw new AppError("Invalid credentials", 401);
   personel.password = undefined;
-  const signObj = {
-    id: personel._id,
-    email: personel.email,
-    role: personel.role,
-  };
-  const token = jwt.sign(signObj, config.jwtSecret, config.jwtOptions);
+  const payload = personel.toJSON();
+  const token = jwt.sign(payload, config.jwtSecret, config.jwtOptions);
   res.status(200).json({
     success: true,
     data: {
       token,
-      user: personel,
     },
   });
 }
@@ -34,8 +30,19 @@ async function personelRegister(req, res) {
     $or: [{ email: data.email }, { tcNo: data.tcNo }],
   });
   if (personel) throw new AppError("Tc yada email kullanilmis.", 401);
+
   const newPersonel = await personelService.create(data);
+  if (newPersonel.branch) {
+    await branchService.addPersonels(personel.branch, [newPersonel._id]);
+  }
+
+  if (newPersonel.vehicle) {
+    await vehicleService.updateOne(newPersonel.vehicle, {
+      driver: newPersonel._id,
+    });
+  }
   newPersonel.password = undefined;
+
   res.status(200).json({
     success: true,
     data: {
@@ -45,23 +52,19 @@ async function personelRegister(req, res) {
 }
 
 async function customerLogin(req, res) {
-  const { email, password } = req.body;
-  const customer = await customerService.findOne({ email });
+  const { email, password, phone } = req.body;
+  // find customer by email or phone
+  const customer = await customerService.findOne({
+    $or: [{ email }, { phone }],
+  });
+
   if (!customer) throw new AppError("Invalid credentials", 401);
 
   const isPasswordValid = await customer.matchPassword(password);
   if (!isPasswordValid) throw new AppError("Invalid credentials", 401);
   customer.password = undefined;
-
-  const signObj = {
-    id: customer._id,
-    email: customer.email,
-    role: config.roles.customer,
-    name: customer.name,
-    surname: customer.surname,
-  };
-
-  const token = jwt.sign(signObj, config.jwtSecret, config.jwtOptions);
+  const payload = customer.toJSON();
+  const token = jwt.sign(payload, config.jwtSecret, config.jwtOptions);
 
   res.status(200).json({
     success: true,
@@ -86,7 +89,7 @@ async function customerRegister(req, res) {
 }
 
 async function getMe(req, res) {
-  const customer = await customerService.findOne({ _id: req.user.id });
+  const customer = await customerService.findOne({ _id: req.user._id });
   if (!customer) throw new AppError("Invalid credentials", 401);
   customer.password = undefined;
   return res.status(200).json({

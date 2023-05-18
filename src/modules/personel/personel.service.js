@@ -8,8 +8,12 @@ async function findById(id) {
   return await personelModel.findById(id);
 }
 
-async function findAll() {
-  return await personelModel.find().select("-password");
+async function findAll(query) {
+  return await personelModel
+    .find({ ...query })
+    .select("-password")
+    .populate("vehicle", "licensePlate")
+    .populate("branch", "name");
 }
 
 async function create(personel = {}) {
@@ -24,6 +28,10 @@ async function updateOne(query, updateBody) {
   return await personelModel.updateOne(query, updateBody);
 }
 
+async function updateMany(query, updateBody) {
+  return await personelModel.updateMany(query, updateBody);
+}
+
 module.exports = {
   findOne,
   findAll,
@@ -31,4 +39,5 @@ module.exports = {
   findById,
   findByIdAndUpdate,
   updateOne,
+  updateMany,
 };
