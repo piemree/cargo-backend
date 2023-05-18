@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const personelModel = require("../personel/personel.model");
 const Schema = mongoose.Schema;
 
 const BranchSchema = new Schema({
