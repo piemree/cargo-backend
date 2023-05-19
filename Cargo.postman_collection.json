@@ -215,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"adana merkez sube\",\r\n    \"address\": 519909,\r\n    \"phone\": \"2555525\",\r\n    \"personels\": [],\r\n    \"cargos\": [],\r\n    \"isActive\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"bursa merkez sube\",\r\n    \"address\": \"Bursa yildirim\",\r\n    \"phone\": \"2555523\",\r\n    \"personels\": [],\r\n    \"cargos\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -237,18 +237,19 @@
 					"response": []
 				},
 				{
-					"name": "Get Branch",
+					"name": "Get All Branch",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/api/branch",
+							"raw": "{{BASE_URL}}/api/branch/getAllBranches",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"api",
-								"branch"
+								"branch",
+								"getAllBranches"
 							]
 						}
 					},
@@ -261,7 +262,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"branchId\":\"645fe3c47933dcfb953bc3c5\",\r\n    \"personelIds\":[\r\n        \"645d6e87933ac903256cb5c8\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"branchId\":\"64656ac3375561f346ca5d56\",\r\n    \"personelIds\":[\r\n        \"6465171e609353f534e81f7b\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -285,113 +286,6 @@
 			]
 		},
 		{
-			"name": "Address",
-			"item": [
-				{
-					"name": "Get Cities",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BASE_URL}}/api/city",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"api",
-								"city"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Districts",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BASE_URL}}/api/district?il_id=1",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"api",
-								"district"
-							],
-							"query": [
-								{
-									"key": "il_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Neighborhood",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BASE_URL}}/api/neighborhood?il_id=1&ilce_id=1757",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"api",
-								"neighborhood"
-							],
-							"query": [
-								{
-									"key": "il_id",
-									"value": "1"
-								},
-								{
-									"key": "ilce_id",
-									"value": "1757"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Streets",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BASE_URL}}/api/street?il_id=1&ilce_id=1757&mahalle_id=176939",
-							"host": [
-								"{{BASE_URL}}"
-							],
-							"path": [
-								"api",
-								"street"
-							],
-							"query": [
-								{
-									"key": "il_id",
-									"value": "1"
-								},
-								{
-									"key": "ilce_id",
-									"value": "1757"
-								},
-								{
-									"key": "mahalle_id",
-									"value": "176939"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Cargo",
 			"item": [
 				{
@@ -401,7 +295,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"sender\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"phone\": \"5439665478\",\r\n        \"tcNo\": \"34587456665\"\r\n    },\r\n    \"receiver\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"phone\": \"5439665474\",\r\n        \"tcNo\": \"34587456645\"\r\n    },\r\n    \"targetBranch\": \"6453bc8387b91412f9cb8075\",\r\n    \"location\": 519909,\r\n    \"content\": \"1 cift terlik\",\r\n    \"totalPrice\": 50,\r\n    \"height\": 10,\r\n    \"weight\": 500,\r\n    \"length\": 30,\r\n    \"width\": 20\r\n}",
+							"raw": "{\r\n    \"sender\": {\r\n        \"name\": \"gurbet\",\r\n        \"surname\": \"polat\",\r\n        \"phone\": \"5444444444\",\r\n        \"tcNo\": \"44444444444\"\r\n    },\r\n    \"receiver\": {\r\n        \"name\": \"gurbet\",\r\n        \"surname\": \"test2\",\r\n        \"phone\": \"5444444443\",\r\n        \"tcNo\": \"44444444443\"\r\n    },\r\n    \"targetBranch\": \"646616a82cc8b215212b8409\",\r\n    \"content\": \"klavye\",\r\n    \"totalPrice\": 50,\r\n    \"height\": 10,\r\n    \"weight\": 500,\r\n    \"length\": 30,\r\n    \"width\": 20\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -525,6 +419,57 @@
 								"api",
 								"vehicle",
 								"createVehicle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "Get All Cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/city",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"city"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Cities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"il_adi\": \"Adana\",\r\n    \"plaka_kodu\": \"01\",\r\n    \"ilceler\": [\r\n      \"Aladağ\",\r\n      \"Seyhan\",\r\n      \"Yüreğir\",\r\n      \"Çukurova\",\r\n      \"Sarıçam\",\r\n      \"Ceyhan\",\r\n      \"Kozan\",\r\n      \"İmamoğlu\",\r\n      \"Karataş\",\r\n      \"Karaisalı\",\r\n      \"Pozantı\",\r\n      \"Yumurtalık\",\r\n      \"Tufanbeyli\",\r\n      \"Feke\",\r\n      \"Saimbeyli\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Adıyaman\",\r\n    \"plaka_kodu\": \"02\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kahta\",\r\n      \"Besni\",\r\n      \"Gölbaşı\",\r\n      \"Gerger\",\r\n      \"Sincik\",\r\n      \"Çelikhan\",\r\n      \"Tut\",\r\n      \"Samsat\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Afyonkarahisar\",\r\n    \"plaka_kodu\": \"03\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Sandıklı\",\r\n      \"Dinar\",\r\n      \"Bolvadin\",\r\n      \"Sinanpaşa\",\r\n      \"Emirdağ\",\r\n      \"Şuhut\",\r\n      \"Çay\",\r\n      \"İhsaniye\",\r\n      \"İscehisar\",\r\n      \"Sultandağı\",\r\n      \"Çobanlar\",\r\n      \"Dazkırı\",\r\n      \"Başmakçı\",\r\n      \"Hocalar\",\r\n      \"Bayat\",\r\n      \"Evciler\",\r\n      \"Kızılören\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Ağrı\",\r\n    \"plaka_kodu\": \"04\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Patnos\",\r\n      \"Doğubayazıt\",\r\n      \"Diyadin\",\r\n      \"Eleşkirt\",\r\n      \"Tutak\",\r\n      \"Taşlıçay\",\r\n      \"Hamur\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Amasya\",\r\n    \"plaka_kodu\": \"05\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Merzifon\",\r\n      \"Suluova\",\r\n      \"Taşova\",\r\n      \"Göynücek\",\r\n      \"Hamamözü\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Ankara\",\r\n    \"plaka_kodu\": \"06\",\r\n    \"ilceler\": [\r\n      \"Çankaya\",\r\n      \"Keçiören\",\r\n      \"Yenimahalle\",\r\n      \"Mamak\",\r\n      \"Etimesgut\",\r\n      \"Sincan\",\r\n      \"Altındağ\",\r\n      \"Pursaklar\",\r\n      \"Gölbaşı\",\r\n      \"Polatlı\",\r\n      \"Çubuk\",\r\n      \"Kahramankazan\",\r\n      \"Beypazarı\",\r\n      \"Haymana\",\r\n      \"Elmadağ\",\r\n      \"Akyurt\",\r\n      \"Şereflikoçhisar\",\r\n      \"Bala\",\r\n      \"Kızılcahamam\",\r\n      \"Nallıhan\",\r\n      \"Ayaş\",\r\n      \"Çamlıdere\",\r\n      \"Kalecik\",\r\n      \"Güdül\",\r\n      \"Evren\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Antalya\",\r\n    \"plaka_kodu\": \"07\",\r\n    \"ilceler\": [\r\n      \"Kepez\",\r\n      \"Muratpaşa\",\r\n      \"Alanya\",\r\n      \"Manavgat\",\r\n      \"Konyaaltı\",\r\n      \"Serik\",\r\n      \"Aksu\",\r\n      \"Kumluca\",\r\n      \"Döşemealtı\",\r\n      \"Kaş\",\r\n      \"Korkuteli\",\r\n      \"Gazipaşa\",\r\n      \" Finike\",\r\n      \"Kemer\",\r\n      \"Elmalı\",\r\n      \"Demre\",\r\n      \"Akseki\",\r\n      \"Gündoğmuş\",\r\n      \"İbradi\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Artvin\",\r\n    \"plaka_kodu\": \"08\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Hopa\",\r\n      \"Borçka\",\r\n      \"Arhavi\",\r\n      \"Yusufeli\",\r\n      \"Şavşat\",\r\n      \"Aksu\",\r\n      \"Kumluca\",\r\n      \"Ardanuç\",\r\n      \"Kemalpaşa\",\r\n      \"Murgul\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Aydın\",\r\n    \"plaka_kodu\": \"09\",\r\n    \"ilceler\": [\r\n      \"Efeler\",\r\n      \"Nazilli\",\r\n      \"Söke\",\r\n      \"Kuşadası\",\r\n      \"Didim\",\r\n      \"İncirliova\",\r\n      \"Çine\",\r\n      \"Germencik\",\r\n      \"Bozdoğan\",\r\n      \"Köşk\",\r\n      \"Kuyucak\",\r\n      \"Koçarlı\",\r\n      \"Sultanhisar\",\r\n      \"Karacasu\",\r\n      \"Buharkent\",\r\n      \"Yenipazar\",\r\n      \"Karpuzlu\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Balıkesir\",\r\n    \"plaka_kodu\": \"10\",\r\n    \"ilceler\": [\r\n      \"Altıeylül\",\r\n      \"Karesi\",\r\n      \"Edremit\",\r\n      \"Bandırma\",\r\n      \"Gönen\",\r\n      \"Ayvalık\",\r\n      \"Burhaniye\",\r\n      \"Bigadiç\",\r\n      \"Susurluk\",\r\n      \"Dursunbey\",\r\n      \"Sındırgı\",\r\n      \"Erdek\",\r\n      \"İvrindi\",\r\n      \"Havran\",\r\n      \"Kepsut\",\r\n      \"Manyas\",\r\n      \"Savaştepe\",\r\n      \"Gömeç\",\r\n      \"Balya\",\r\n      \"Marmara\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bilecik\",\r\n    \"plaka_kodu\": \"11\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Bozüyük\",\r\n      \"Osmaneli\",\r\n      \"Söğüt\",\r\n      \"Gölpazarı\",\r\n      \"Pazaryeri\",\r\n      \"İnhisar\",\r\n      \"Yenipazar\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bingöl\",\r\n    \"plaka_kodu\": \"12\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Genç\",\r\n      \"Solhan\",\r\n      \"Karlıova\",\r\n      \"Adaklı\",\r\n      \"Kiğı\",\r\n      \"Yedisu\",\r\n      \"Yayladere\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bitlis\",\r\n    \"plaka_kodu\": \"13\",\r\n    \"ilceler\": [\r\n      \"Tatvan\",\r\n      \"Merkez\",\r\n      \"Güroymak\",\r\n      \"Ahlat\",\r\n      \"Hizan\",\r\n      \"Mutki\",\r\n      \"Adilcevaz\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bolu\",\r\n    \"plaka_kodu\": \"14\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Gerede\",\r\n      \"Mudurnu\",\r\n      \"Göynük\",\r\n      \"Mengen\",\r\n      \"Yeniçağa\",\r\n      \"Dörtdivan\",\r\n      \"Seben\",\r\n      \"Kıbrıscık\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Burdur\",\r\n    \"plaka_kodu\": \"15\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Bucak\",\r\n      \"Gölhisar\",\r\n      \"Yeşilova\",\r\n      \"Çavdır\",\r\n      \"Tefenni\",\r\n      \"Ağlasun\",\r\n      \"Karamanlı\",\r\n      \"Altınyayla\",\r\n      \"Çeltikçi\",\r\n      \"Kemer\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bursa\",\r\n    \"plaka_kodu\": \"16\",\r\n    \"ilceler\": [\r\n      \"Osmangazi\",\r\n      \"Yıldırım\",\r\n      \"Nilüfer\",\r\n      \"İnegöl\",\r\n      \"Gemlik\",\r\n      \"Mustafakemalpa\",\r\n      \"Mudanya\",\r\n      \"Gürsu\",\r\n      \"Karacabey\",\r\n      \"Orhangazi\",\r\n      \"Kestel\",\r\n      \"Yenişehir\",\r\n      \"İznik\",\r\n      \"Orhaneli\",\r\n      \"Keles\",\r\n      \"Büyükorhan\",\r\n      \"Harmancık\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Çanakkale\",\r\n    \"plaka_kodu\": \"17\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Biga\",\r\n      \"Çan\",\r\n      \"Gelibolu\",\r\n      \"Ayvacık\",\r\n      \"Ezine\",\r\n      \"Yenice\",\r\n      \"Bayramiç\",\r\n      \"Lapseki\",\r\n      \"Gökçeada\",\r\n      \"Eceabat\",\r\n      \"Bozcaada\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Çankırı\",\r\n    \"plaka_kodu\": \"18\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Orta\",\r\n      \"Çerkeş\",\r\n      \"Ilgaz\",\r\n      \"Şabanözü\",\r\n      \"Kurşunlu\",\r\n      \"Yapraklı\",\r\n      \"Kızılırmak\",\r\n      \"Eldivan\",\r\n      \"Atkaracalar\",\r\n      \"Korgun\",\r\n      \"Bayramören\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Çorum\",\r\n    \"plaka_kodu\": \"19\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Sungurlu\",\r\n      \"Osmancık\",\r\n      \"İskilip\",\r\n      \"Alaca\",\r\n      \"Bayat\",\r\n      \"Kargı\",\r\n      \"Mecitözü\",\r\n      \"Ortaköy\",\r\n      \"Uğurludağ\",\r\n      \"Dodurga\",\r\n      \"Oğuzlar\",\r\n      \"Laçin\",\r\n      \"Boğazkale\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Denizli\",\r\n    \"plaka_kodu\": \"20\",\r\n    \"ilceler\": [\r\n      \"Pamukkale\",\r\n      \"Merkezefendi\",\r\n      \"Çivril\",\r\n      \"Acıpayam\",\r\n      \"Tavas\",\r\n      \"Honaz\",\r\n      \"Sarayköy\",\r\n      \"Buldan\",\r\n      \"Kale\",\r\n      \"Çal\",\r\n      \"Çameli\",\r\n      \"Serinhisar\",\r\n      \"Bozkurt\",\r\n      \"Güney\",\r\n      \"Çardak\",\r\n      \"Bekilli\",\r\n      \"Beyağaç\",\r\n      \"Babadağ\",\r\n      \"Baklan\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Diyarbakır\",\r\n    \"plaka_kodu\": \"21\",\r\n    \"ilceler\": [\r\n      \"Bağlar\",\r\n      \"Kayapınar\",\r\n      \"Yenişehir\",\r\n      \"Ergani\",\r\n      \"Bismil\",\r\n      \"Sur\",\r\n      \"Silvan\",\r\n      \"Çınar\",\r\n      \"Çermik\",\r\n      \"Dicle\",\r\n      \"Kulp\",\r\n      \"Hani\",\r\n      \"Lice\",\r\n      \"Eğil\",\r\n      \"Hazro\",\r\n      \"Kocaköy\",\r\n      \"Çüngüş\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Edirne\",\r\n    \"plaka_kodu\": \"22\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Keşan\",\r\n      \"Uzunköprü\",\r\n      \"İpsala\",\r\n      \"Havsa\",\r\n      \"Meriç\",\r\n      \"Enez\",\r\n      \"Süloğlu\",\r\n      \"Lalapaşa\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Elazığ\",\r\n    \"plaka_kodu\": \"23\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kovancılar\",\r\n      \"Karakoçan\",\r\n      \"Palu\",\r\n      \"Baskil\",\r\n      \"Arıcak\",\r\n      \"Maden\",\r\n      \"Sivrice\",\r\n      \"Keban\",\r\n      \"Alacakaya\",\r\n      \"Ağın\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Erzincan\",\r\n    \"plaka_kodu\": \"24\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Tercan\",\r\n      \"Üzümlü\",\r\n      \"Refahiye\",\r\n      \"Çayırlı\",\r\n      \"İliç\",\r\n      \"Kemah\",\r\n      \"Kemaliye\",\r\n      \"Otlukbeli\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Erzurum\",\r\n    \"plaka_kodu\": \"25\",\r\n    \"ilceler\": [\r\n      \"Yakutiye\",\r\n      \"Palandöken\",\r\n      \"Aziziye\",\r\n      \"Horasan\",\r\n      \"Oltu\",\r\n      \"Pasinler\",\r\n      \"Karayazı\",\r\n      \"Hınıs\",\r\n      \"Tekman\",\r\n      \"Aşkale\",\r\n      \"Karaçoban\",\r\n      \"Şenkaya\",\r\n      \"Çat\",\r\n      \"Tortum\",\r\n      \"Köprüköy\",\r\n      \"İspir\",\r\n      \"Narman\",\r\n      \"Uzundere\",\r\n      \"Olur\",\r\n      \"Pazaryolu\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Eskişehir\",\r\n    \"plaka_kodu\": \"26\",\r\n    \"ilceler\": [\r\n      \"Odunpazarı\",\r\n      \"Tepebaşı\",\r\n      \"Sivrihisar\",\r\n      \"Çifteler\",\r\n      \"Seyitgazi\",\r\n      \"Alpu\",\r\n      \"Mihalıççık\",\r\n      \"Mahmudiye\",\r\n      \"Beylikova\",\r\n      \"İnönü\",\r\n      \"Günyüzü\",\r\n      \"Sarıcakaya\",\r\n      \"Mihalgazi\",\r\n      \"Han\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Gaziantep\",\r\n    \"plaka_kodu\": \"27\",\r\n    \"ilceler\": [\r\n      \"Şahinbey\",\r\n      \"Şehitkamil\",\r\n      \"Nizip\",\r\n      \"İslahiye\",\r\n      \"Nurdağı\",\r\n      \"Araban\",\r\n      \"Oğuzeli\",\r\n      \"Yavuzeli\",\r\n      \"Karkamış\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Giresun\",\r\n    \"plaka_kodu\": \"28\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Bulancak\",\r\n      \"Espiye\",\r\n      \"Görele\",\r\n      \"Tirebolu\",\r\n      \"Şebinkarahisar\",\r\n      \"Keşap\",\r\n      \"Dereli\",\r\n      \"Yağlıdere\",\r\n      \"Piraziz\",\r\n      \"Eynesil\",\r\n      \"Alucra\",\r\n      \"Çamoluk\",\r\n      \"Güce\",\r\n      \"Doğankent\",\r\n      \"Çanakçı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Gümüşhane\",\r\n    \"plaka_kodu\": \"29\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kelkit\",\r\n      \"Şiran\",\r\n      \"Kürtün\",\r\n      \"Torul\",\r\n      \"Köse\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Hakkari\",\r\n    \"plaka_kodu\": \"30\",\r\n    \"ilceler\": [\r\n      \"Yüksekova\",\r\n      \"Merkez\",\r\n      \"Şemdinli\",\r\n      \"Derecik\",\r\n      \"Çukurca\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Hatay\",\r\n    \"plaka_kodu\": \"31\",\r\n    \"ilceler\": [\r\n      \"Antakya\",\r\n      \"İskenderun\",\r\n      \"Defne\",\r\n      \"Dörtyol\",\r\n      \"Samandağ\",\r\n      \"Kırıkhan\",\r\n      \"Reyhanlı\",\r\n      \"Arsuz\",\r\n      \"Altınözü\",\r\n      \"Hassa\",\r\n      \"Payas\",\r\n      \"Erzin\",\r\n      \"Yayladağı\",\r\n      \"Belen\",\r\n      \"Kumlu\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Isparta\",\r\n    \"plaka_kodu\": \"32\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Yalvaç\",\r\n      \"Eğirdir\",\r\n      \"Şarkikaraağaç\",\r\n      \"Gelendost\",\r\n      \"Keçiborlu\",\r\n      \"Senirkent\",\r\n      \"Sütçüler\",\r\n      \"Gönen\",\r\n      \"Uluborlu\",\r\n      \"Atabey\",\r\n      \"Aksu\",\r\n      \"Yenişarbademli\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Mersin\",\r\n    \"plaka_kodu\": \"33\",\r\n    \"ilceler\": [\r\n      \"Tarsus\",\r\n      \"Toroslar\",\r\n      \"Akdeniz\",\r\n      \"Yenişehir\",\r\n      \"Mezitli\",\r\n      \"Erdemli\",\r\n      \"Silifke\",\r\n      \"Anamur\",\r\n      \"Mut\",\r\n      \"Bozyazı\",\r\n      \"Gülnar\",\r\n      \"Aydıncık\",\r\n      \"Çamlıyayla\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"İstanbul\",\r\n    \"plaka_kodu\": \"34\",\r\n    \"ilceler\": [\r\n      \"Esenyurt\",\r\n      \"Küçükçekmece\",\r\n      \"Bağcılar\",\r\n      \"Pendik\",\r\n      \"Ümraniye\",\r\n      \"Bahçelievler\",\r\n      \"Üsküdar\",\r\n      \"Sultangazi\",\r\n      \"Maltepe\",\r\n      \"Gaziosmanpaşa\",\r\n      \"Kartal\",\r\n      \"Kadıköy\",\r\n      \"Esenler\",\r\n      \"Kağıthane\",\r\n      \"Fatih\",\r\n      \"Avcılar\",\r\n      \"Başakşehir\",\r\n      \"Ataşehir\",\r\n      \"Sancaktepe\",\r\n      \"Eyüp\",\r\n      \"Sarıyer\",\r\n      \"Beylikdüzü\",\r\n      \"Sultanbeyli\",\r\n      \"Güngören\",\r\n      \"Zeytinburnu\",\r\n      \"Şişli\",\r\n      \"Bayrampaşa\",\r\n      \"Arnavutköy\",\r\n      \"Tuzla\",\r\n      \"Çekmeköy\",\r\n      \"Büyükçekmece\",\r\n      \"Beykoz\",\r\n      \"Beyoğlu\",\r\n      \"Bakırköy\",\r\n      \"Silivri\",\r\n      \"Beşiktaş\",\r\n      \"Çatalca\",\r\n      \"Şile\",\r\n      \"Adalar\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"İzmir\",\r\n    \"plaka_kodu\": \"35\",\r\n    \"ilceler\": [\r\n      \"Buca\",\r\n      \"Karabağlar\",\r\n      \"Bornova\",\r\n      \"Konak\",\r\n      \"Karşıyaka\",\r\n      \"Bayraklı\",\r\n      \"Çiğli\",\r\n      \"Torbalı\",\r\n      \"Menemen\",\r\n      \"Gaziemir\",\r\n      \"Ödemiş\",\r\n      \"Kemalpaşa\",\r\n      \"Bergama\",\r\n      \"Aliağa\",\r\n      \"Menderes\",\r\n      \"Tire\",\r\n      \"Balçova\",\r\n      \"Urla\",\r\n      \"Narlıdere\",\r\n      \"Dikili\",\r\n      \"Kiraz\",\r\n      \"Seferihisar\",\r\n      \"Çeşme\",\r\n      \"Bayındır\",\r\n      \"Selçuk\",\r\n      \"Foça\",\r\n      \"Güzelbahçe\",\r\n      \"Kınık\",\r\n      \"Beydağ\",\r\n      \"Karaburun\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kars\",\r\n    \"plaka_kodu\": \"36\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kağızman\",\r\n      \"Sarıkamış\",\r\n      \"Selim\",\r\n      \"Digor\",\r\n      \"Arpaçay\",\r\n      \"Akyaka\",\r\n      \"Susuz\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kastamonu\",\r\n    \"plaka_kodu\": \"37\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Tosya\",\r\n      \"Taşköprü\",\r\n      \"Cide\",\r\n      \"İnebolu\",\r\n      \"Araç\",\r\n      \"Bozkurt\",\r\n      \"Daday\",\r\n      \"Azdavay\",\r\n      \"Çatalzeytin\",\r\n      \"Doğanyurt\",\r\n      \"Küre\",\r\n      \"Pınarbaşı\",\r\n      \"İhsangazi\",\r\n      \"Şenpazar\",\r\n      \"Abana\",\r\n      \"Hanönü\",\r\n      \"Seydiler\",\r\n      \"Ağlı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kayseri\",\r\n    \"plaka_kodu\": \"38\",\r\n    \"ilceler\": [\r\n      \"Melikgazi\",\r\n      \"Kocasinan\",\r\n      \"Talas\",\r\n      \"Develi\",\r\n      \"Yahyalı\",\r\n      \"Bünyan\",\r\n      \"Pınarbaşı\",\r\n      \"Tomarza\",\r\n      \"Yeşilhisar\",\r\n      \"Sarıoğlan\",\r\n      \"Hacılar\",\r\n      \"Sarız\",\r\n      \"Felahiye\",\r\n      \"Akkışla\",\r\n      \"Özvatan\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kırklareli\",\r\n    \"plaka_kodu\": \"39\",\r\n    \"ilceler\": [\r\n      \"Lüleburgaz\",\r\n      \"Merkez\",\r\n      \"Babaeski\",\r\n      \"Vize\",\r\n      \"Pınarhisar\",\r\n      \"Demirköy\",\r\n      \"Pehlivanköy\",\r\n      \"Kofçaz\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kırşehir\",\r\n    \"plaka_kodu\": \"40\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kaman\",\r\n      \"Mucur\",\r\n      \"Çiçekdağı\",\r\n      \"Akpınar\",\r\n      \"Boztepe\",\r\n      \"Akçakent\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kocaeli\",\r\n    \"plaka_kodu\": \"41\",\r\n    \"ilceler\": [\r\n      \"Gebze\",\r\n      \"İzmit\",\r\n      \"Darıca\",\r\n      \"Körfez\",\r\n      \"Gölcük\",\r\n      \"Derince\",\r\n      \"Çayırova\",\r\n      \"Kartepe\",\r\n      \"Başiskele\",\r\n      \"Karamürsel\",\r\n      \"Kandıra\",\r\n      \"Dilovası\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Konya\",\r\n    \"plaka_kodu\": \"42\",\r\n    \"ilceler\": [\r\n      \"Selçuklu\",\r\n      \"Meram\",\r\n      \"Karatay\",\r\n      \"Ereğli\",\r\n      \"Akşehir\",\r\n      \"Beyşehir\",\r\n      \"Çumra\",\r\n      \"Seydişehir\",\r\n      \"Ilgın\",\r\n      \"Cihanbeyli\",\r\n      \"Kulu\",\r\n      \"Karapınar\",\r\n      \"Kadınhanı\",\r\n      \"Sarayönü\",\r\n      \"Bozkır\",\r\n      \"Yunak\",\r\n      \"Hüyük\",\r\n      \"Doğanhisar\",\r\n      \"Altınekin\",\r\n      \"Hadim\",\r\n      \"Çeltik\",\r\n      \"Güneysınır\",\r\n      \"Emirgazi\",\r\n      \"Taşkent\",\r\n      \"Tuzlukçu\",\r\n      \"Derebucak\",\r\n      \"Akören\",\r\n      \"Ahırlı\",\r\n      \"Derbent\",\r\n      \"Halkapınar\",\r\n      \"Yalıhüyük\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kütahya\",\r\n    \"plaka_kodu\": \"43\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Tavşanlı\",\r\n      \"Simav\",\r\n      \"Gediz\",\r\n      \"Emet\",\r\n      \"Altıntaş\",\r\n      \"Domaniç\",\r\n      \"Hisarcık\",\r\n      \"Aslanapa\",\r\n      \"Çavdarhisar\",\r\n      \"Şaphane\",\r\n      \"Pazarlar\",\r\n      \"Dumlupınar\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Malatya\",\r\n    \"plaka_kodu\": \"44\",\r\n    \"ilceler\": [\r\n      \"Yeşilyurt\",\r\n      \"Battalgazi\",\r\n      \"Doğanşehir\",\r\n      \"Akçadağ\",\r\n      \"Darende\",\r\n      \"Hekimhan\",\r\n      \"Yazıhan\",\r\n      \"Pütürge\",\r\n      \"Arapgir\",\r\n      \"Kuluncak\",\r\n      \"Arguvan\",\r\n      \"Kale\",\r\n      \"Doğanyol\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Manisa\",\r\n    \"plaka_kodu\": \"45\",\r\n    \"ilceler\": [\r\n      \"Yunusemre\",\r\n      \"Akhisar\",\r\n      \"Şehzadeler\",\r\n      \"Turgutlu\",\r\n      \"Salihli\",\r\n      \"Soma\",\r\n      \"Alaşehir\",\r\n      \"Saruhanlı\",\r\n      \"Kula\",\r\n      \"Demirci\",\r\n      \"Kırıkağaç\",\r\n      \"Sarıgöl\",\r\n      \"Gördes\",\r\n      \"Selendi\",\r\n      \"Ahmetli\",\r\n      \"Gölmarmara\",\r\n      \"Köprübaşı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kahramanmaraş\",\r\n    \"plaka_kodu\": \"46\",\r\n    \"ilceler\": [\r\n      \"Onikişubat\",\r\n      \"Dulkadiroğlu\",\r\n      \"Elbistan\",\r\n      \"Afşin\",\r\n      \"Türkoğlu\",\r\n      \"Pazarcık\",\r\n      \"Göksun\",\r\n      \"Andırın\",\r\n      \"Çağlayancerit\",\r\n      \"Nurhak\",\r\n      \"Ekinözü\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Mardin\",\r\n    \"plaka_kodu\": \"47\",\r\n    \"ilceler\": [\r\n      \"Kızıltepe\",\r\n      \"Artuklu\",\r\n      \"Midyat\",\r\n      \"Nusaybin\",\r\n      \"Derik\",\r\n      \"Mazıdağı\",\r\n      \"Dargeçit\",\r\n      \"Savur\",\r\n      \"Yeşilli\",\r\n      \"Ömerli\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Muğla\",\r\n    \"plaka_kodu\": \"48\",\r\n    \"ilceler\": [\r\n      \"Bodrum\",\r\n      \"Fethiye\",\r\n      \"Milas\",\r\n      \"Menteşe\",\r\n      \"Marmaris\",\r\n      \"Seydikemer\",\r\n      \"Ortaca\",\r\n      \"Yatağan\",\r\n      \"Dalaman\",\r\n      \"Köyceğiz\",\r\n      \"Ula\",\r\n      \"Datça\",\r\n      \"Kavaklıdere\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Muş\",\r\n    \"plaka_kodu\": \"49\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Bulanık\",\r\n      \"Malazgirt\",\r\n      \"Varto\",\r\n      \"Korkut\",\r\n      \"Hasköy\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Nevşehir\",\r\n    \"plaka_kodu\": \"50\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Ürgüp\",\r\n      \"Avanos\",\r\n      \"Gülşehir\",\r\n      \"Derinkuyu\",\r\n      \"Acıgöl\",\r\n      \"Kozaklı\",\r\n      \"Hacıbektaş\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Niğde\",\r\n    \"plaka_kodu\": \"51\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Bor\",\r\n      \"Çiftlik\",\r\n      \"Ulukışla\",\r\n      \"Altunhisar\",\r\n      \"Çamardı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Ordu\",\r\n    \"plaka_kodu\": \"52\",\r\n    \"ilceler\": [\r\n      \"Altınordu\",\r\n      \"Ünye\",\r\n      \"Fatsa\",\r\n      \"Perşembe\",\r\n      \"Kumru\",\r\n      \"Korgan\",\r\n      \"Gölköy\",\r\n      \"Ulubey\",\r\n      \"Mesudiye\",\r\n      \"Akkuş\",\r\n      \"Aybastı\",\r\n      \"Gürgentepe\",\r\n      \"İkizce\",\r\n      \"Çatalpınar\",\r\n      \"Çaybaşı\",\r\n      \"Çamaş\",\r\n      \"Kabataş\",\r\n      \"Kabadüz\",\r\n      \"Gülyalı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Rize\",\r\n    \"plaka_kodu\": \"53\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Çayeli\",\r\n      \"Ardeşen\",\r\n      \"Pazar\",\r\n      \"Fındıklı\",\r\n      \"Kalkandere\",\r\n      \"Güneysu\",\r\n      \"İyidere\",\r\n      \"İkizdere\",\r\n      \"Derepazarı\",\r\n      \"Çamlıhemşin\",\r\n      \"Hemşin\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Sakarya\",\r\n    \"plaka_kodu\": \"54\",\r\n    \"ilceler\": [\r\n      \"Adapazarı\",\r\n      \"Serdivan\",\r\n      \"Akyazı\",\r\n      \"Erenler\",\r\n      \"Hendek\",\r\n      \"Karasu\",\r\n      \"Geyve\",\r\n      \"Arifiye\",\r\n      \"Sapanca\",\r\n      \"Pamukova\",\r\n      \"Ferizli\",\r\n      \"Kocaali\",\r\n      \"Kaynarca\",\r\n      \"Söğütlü\",\r\n      \"Karapürçek\",\r\n      \"Taraklı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Samsun\",\r\n    \"plaka_kodu\": \"55\",\r\n    \"ilceler\": [\r\n      \"İlkadım\",\r\n      \"Atakum\",\r\n      \"Bafra\",\r\n      \"Çarşamba\",\r\n      \"Canik\",\r\n      \"Vezirköprü\",\r\n      \"Terme\",\r\n      \"Tekkeköy\",\r\n      \"Havza\",\r\n      \"19 Mayıs\",\r\n      \"Alaçam\",\r\n      \"Salıpazarı\",\r\n      \"Ayvacık\",\r\n      \"Kavak\",\r\n      \"Asarcık\",\r\n      \"Ladik\",\r\n      \"Yakakent\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Siirt\",\r\n    \"plaka_kodu\": \"56\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kurtalan\",\r\n      \"Pervari\",\r\n      \"Baykan\",\r\n      \"Şirvan\",\r\n      \"Eruh\",\r\n      \"Tillo\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Sinop\",\r\n    \"plaka_kodu\": \"57\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Boyabat\",\r\n      \"Gerze\",\r\n      \"Ayancık\",\r\n      \"Durağan\",\r\n      \"Türkeli\",\r\n      \"Erfelek\",\r\n      \"Saraydüzü\",\r\n      \"Dikmen\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Sivas\",\r\n    \"plaka_kodu\": \"58\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Şarkışla\",\r\n      \"Yıldızeli\",\r\n      \"Suşehri\",\r\n      \"Gemerek\",\r\n      \"Zara\",\r\n      \"Kangal\",\r\n      \"Gürün\",\r\n      \"Divriği\",\r\n      \"Koyulhisar\",\r\n      \"Hafik\",\r\n      \"Ulaş\",\r\n      \"Altınyayla\",\r\n      \"İmranlı\",\r\n      \"Akıncılar\",\r\n      \"Gölova\",\r\n      \"Doğanşar\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Tekirdağ\",\r\n    \"plaka_kodu\": \"59\",\r\n    \"ilceler\": [\r\n      \"Çorlu\",\r\n      \"Süleymanpaşa\",\r\n      \"Çerkezköy\",\r\n      \"Kapaklı\",\r\n      \"Ergene\",\r\n      \"Malkara\",\r\n      \"Saray\",\r\n      \"Şarköy\",\r\n      \"Hayrabolu\",\r\n      \"Muratlı\",\r\n      \"Marmaraereğlisi\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Tokat\",\r\n    \"plaka_kodu\": \"60\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Erbaa\",\r\n      \"Turhal\",\r\n      \"Niksar\",\r\n      \"Zile\",\r\n      \"Reşadiye\",\r\n      \"Almus\",\r\n      \"Pazar\",\r\n      \"Yeşilyurt\",\r\n      \"Artova\",\r\n      \"Sulusaray\",\r\n      \"Başçiftlik\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Trabzon\",\r\n    \"plaka_kodu\": \"61\",\r\n    \"ilceler\": [\r\n      \"Ortahisar\",\r\n      \"Akçaabat\",\r\n      \"Araklı\",\r\n      \"Of\",\r\n      \"Yomra\",\r\n      \"Arsin\",\r\n      \"Vakfıkebir\",\r\n      \"Sürmene\",\r\n      \"Maçka\",\r\n      \"Beşikdüzü\",\r\n      \"Çarşıbaşı\",\r\n      \"Çaykara\",\r\n      \"Tonya\",\r\n      \"Düzköy\",\r\n      \"Şalpazarı\",\r\n      \"Hayrat\",\r\n      \"Köprübaşı\",\r\n      \"Dernekpazarı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Tunceli\",\r\n    \"plaka_kodu\": \"62\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Pertek\",\r\n      \"Mazgirt\",\r\n      \"Çemişgezek\",\r\n      \"Ovacık\",\r\n      \"Hozat\",\r\n      \"Pülümür\",\r\n      \"Nazımiye\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Şanlıurfa\",\r\n    \"plaka_kodu\": \"63\",\r\n    \"ilceler\": [\r\n      \"Eyyübiye\",\r\n      \"Haliliye\",\r\n      \"Siverek\",\r\n      \"Viranşehir\",\r\n      \"Karaköprü\",\r\n      \"Akçakale\",\r\n      \"Suruç\",\r\n      \"Birecik\",\r\n      \"Harran\",\r\n      \"Ceylanpınar\",\r\n      \"Bozova\",\r\n      \"Hilvan\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Uşak\",\r\n    \"plaka_kodu\": \"64\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Banaz\",\r\n      \"Eşme\",\r\n      \"Sivaslı\",\r\n      \"Ulubey\",\r\n      \"Karahallı\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Van\",\r\n    \"plaka_kodu\": \"65\",\r\n    \"ilceler\": [\r\n      \"İpekyolu\",\r\n      \"Erciş\",\r\n      \"Tuşba\",\r\n      \"Edremit\",\r\n      \"Özalp\",\r\n      \"Çaldıran\",\r\n      \"Başkale\",\r\n      \"Muradiye\",\r\n      \"Gürpınar\",\r\n      \"Gevaş\",\r\n      \"Saray\",\r\n      \"Çatak\",\r\n      \"Bahçesaray\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Yozgat\",\r\n    \"plaka_kodu\": \"66\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Sorgun\",\r\n      \"Akdağmadeni\",\r\n      \"Yerköy\",\r\n      \"Boğazlıyan\",\r\n      \"Sarıkaya\",\r\n      \"Çekerek\",\r\n      \"Şefaatli\",\r\n      \"Saraykent\",\r\n      \"Çayıralan\",\r\n      \"Kadışehri\",\r\n      \"Aydıncık\",\r\n      \"Yenifakılı\",\r\n      \"Çandır\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Zonguldak\",\r\n    \"plaka_kodu\": \"67\",\r\n    \"ilceler\": [\r\n      \"Ereğli\",\r\n      \"Merkez\",\r\n      \"Çaycuma\",\r\n      \"Devrek\",\r\n      \"Kozlu\",\r\n      \"Alaplı\",\r\n      \"Kilimli\",\r\n      \"Gökçebey\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Aksaray\",\r\n    \"plaka_kodu\": \"68\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Ortaköy\",\r\n      \"Eskil\",\r\n      \"Gülağaç\",\r\n      \"Güzelyurt\",\r\n      \"Sultanhanı\",\r\n      \"Ağaçören\",\r\n      \"Sarıyahşi\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bayburt\",\r\n    \"plaka_kodu\": \"69\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Demirözü\",\r\n      \"Aydıntepe\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Karaman\",\r\n    \"plaka_kodu\": \"70\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Ermenek\",\r\n      \"Sarıveliler\",\r\n      \"Ayrancı\",\r\n      \"Kazımkarabekir\",\r\n      \"Başyayla\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kırıkkale\",\r\n    \"plaka_kodu\": \"71\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Yahşihan\",\r\n      \"Keskin\",\r\n      \"Delice\",\r\n      \"Sulakyurt\",\r\n      \"Bahşili\",\r\n      \"Balışeyh\",\r\n      \"Karakeçili\",\r\n      \"Çelebi\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Batman\",\r\n    \"plaka_kodu\": \"72\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kozluk\",\r\n      \"Sason\",\r\n      \"Beşiri\",\r\n      \"Gercüş\",\r\n      \"Hasankeyf\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Şırnak\",\r\n    \"plaka_kodu\": \"73\",\r\n    \"ilceler\": [\r\n      \"Cizre\",\r\n      \"Silopi\",\r\n      \"Merkez\",\r\n      \"İdil\",\r\n      \"Uludere\",\r\n      \"Beytüşşebap\",\r\n      \"Güçlükonak\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Bartın\",\r\n    \"plaka_kodu\": \"74\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Ulus\",\r\n      \"Amasra\",\r\n      \"Kurucaşile\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Ardahan\",\r\n    \"plaka_kodu\": \"75\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Göle\",\r\n      \"Çıldır\",\r\n      \"Hanak\",\r\n      \"Posof\",\r\n      \"Damal\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Iğdır\",\r\n    \"plaka_kodu\": \"76\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Tuzluca\",\r\n      \"Aralık\",\r\n      \"Karakoyunlu\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Yalova\",\r\n    \"plaka_kodu\": \"77\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Çiftlikköy\",\r\n      \"Çınarcık\",\r\n      \"Altınova\",\r\n      \"Armutlu\",\r\n      \"Termal\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Karabük\",\r\n    \"plaka_kodu\": \"78\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Safranbolu\",\r\n      \"Yenice\",\r\n      \"Eskipazar\",\r\n      \"Eflani\",\r\n      \"Ovacık\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Kilis\",\r\n    \"plaka_kodu\": \"79\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Musabeyli\",\r\n      \"Elbeyli\",\r\n      \"Polateli\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Osmaniye\",\r\n    \"plaka_kodu\": \"80\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Kadirli\",\r\n      \"Düziçi\",\r\n      \"Bahçe\",\r\n      \"Toprakkale\",\r\n      \"Sumbas\",\r\n      \"Hasanbeyli\"\r\n    ]\r\n  },\r\n  {\r\n    \"il_adi\": \"Düzce\",\r\n    \"plaka_kodu\": \"81\",\r\n    \"ilceler\": [\r\n      \"Merkez\",\r\n      \"Akçakoca\",\r\n      \"Kaynaşlı\",\r\n      \"Gölyaka\",\r\n      \"Çilimli\",\r\n      \"Yığılca\",\r\n      \"Gümüşova\",\r\n      \"Cumayeri\"\r\n    ]\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/city/importCities",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"city",
+								"importCities"
 							]
 						}
 					},
