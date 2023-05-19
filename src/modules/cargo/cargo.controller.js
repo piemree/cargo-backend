@@ -49,6 +49,7 @@ async function getAllCargos(req, res) {
 async function getMySendedCargos(req, res) {
   const userId = req.user._id;
   const cargos = await cargoService.find({ sender: userId });
+  // send
   res.status(200).json({
     success: true,
     data: cargos,
