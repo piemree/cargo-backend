@@ -43,7 +43,10 @@ async function createCargo(req, res) {
 
 async function getAllCargos(req, res) {
   const cargos = await cargoService.find();
-  res.status(200).json(cargos);
+  res.status(200).json({
+    success: true,
+    data: cargos,
+  });
 }
 
 async function getMySendedCargos(req, res) {
