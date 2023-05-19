@@ -41,6 +41,11 @@ async function createCargo(req, res) {
   res.status(201).json(createdCargo);
 }
 
+async function getAllCargos(req, res) {
+  const cargos = await cargoService.find();
+  res.status(200).json(cargos);
+}
+
 async function getMySendedCargos(req, res) {
   const userId = req.user._id;
   const cargos = await cargoService.find({ sender: userId });
@@ -135,4 +140,5 @@ module.exports = {
   giveCargosToVehicle,
   giveCargosToBranch,
   giveCargoToCustomer,
+  getAllCargos,
 };

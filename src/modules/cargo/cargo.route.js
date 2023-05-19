@@ -10,6 +10,13 @@ router.post(
   cargoController.createCargo
 );
 
+//get all cargos
+router.get(
+  "/getAllCargos",
+  allowedRoles([roles.admin]),
+  cargoController.getAllCargos
+);
+
 // getAllSendedCargos
 router.get(
   "/getMySendedCargos",
