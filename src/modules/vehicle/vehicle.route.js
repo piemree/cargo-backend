@@ -24,4 +24,11 @@ router.post(
   allowedRoles([roles.admin]),
   vehicleController.assignVehicleToPersonel
 );
+
+//delete vehicle by id
+router.delete(
+  "/deleteVehicle/:vehicleId",
+  allowedRoles([roles.admin]),
+  vehicleController.deleteVehicle
+);
 module.exports = router;

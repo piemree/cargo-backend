@@ -17,10 +17,11 @@ async function findById(id) {
 }
 
 async function find() {
-  return await vehicleModel
-    .find()
-    //populate driver name
-    .populate("driver", "name surname");
+  return await vehicleModel.find().populate("driver", "name surname");
+}
+
+async function deleteOne(id) {
+  return await vehicleModel.findByIdAndDelete(id);
 }
 
 module.exports = {
@@ -29,4 +30,5 @@ module.exports = {
   findById,
   find,
   findByDriverIdAndUpdate,
+  deleteOne,
 };

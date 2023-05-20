@@ -32,6 +32,10 @@ async function updateMany(query, updateBody) {
   return await personelModel.updateMany(query, updateBody);
 }
 
+async function deleteOne(id) {
+  return await personelModel.deleteOne({ _id: id });
+}
+
 module.exports = {
   findOne,
   findAll,
@@ -40,4 +44,5 @@ module.exports = {
   findByIdAndUpdate,
   updateOne,
   updateMany,
+  deleteOne,
 };

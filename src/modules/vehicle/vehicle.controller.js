@@ -53,8 +53,31 @@ async function assignVehicleToPersonel(req, res) {
   });
 }
 
+async function deleteVehicle(req, res) {
+  const { vehicleId } = req.params;
+  const vehicle = await vehicleService.findById(vehicleId);
+  if (!vehicle) throw new AppError("Vehicle not found", 404);
+
+  if (vehicle?.cargos?.length > 0) {
+    throw new AppError("Vehicle has cargo", 400);
+  }
+  // delete vehicle from personel
+  if (vehicle.driver) {
+    await personelService.findByIdAndUpdate(vehicle.driver, {
+      vehicle: null,
+    });
+  }
+
+  await vehicleService.deleteOne(vehicleId);
+
+  res.status(200).json({
+    success: true,
+  });
+}
+
 module.exports = {
   createVehicle,
   getAllVehicles,
   assignVehicleToPersonel,
+  deleteVehicle,
 };

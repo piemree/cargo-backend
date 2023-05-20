@@ -16,6 +16,31 @@ router.post(
   branchController.addPersonels
 );
 
-router.get("/getAllBranches", allowedRoles([roles.admin]), branchController.getAllBranches);
+router.get(
+  "/getAllBranches",
+  allowedRoles([roles.admin]),
+  branchController.getAllBranches
+);
+
+router.get(
+  "/getBranchById/:branchId",
+  allowedRoles([roles.admin, roles.branchPersonel]),
+  branchController.getBranchById
+);
+
+// update branch by id
+router.put(
+  "/updateBranch/:branchId",
+  allowedRoles([roles.admin]),
+  branchController.updateBranch
+);
+
+//delete branch by id
+router.delete(
+  "/deleteBranch/:branchId",
+  allowedRoles([roles.admin]),
+  branchController.deleteBranch
+);
+
 //test
 module.exports = router;

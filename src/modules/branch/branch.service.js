@@ -13,7 +13,21 @@ async function findOne(query) {
 }
 
 async function findById(id) {
-  return await branchModel.findById(id);
+  return await branchModel
+    .findById(id)
+    .populate("personels", "-password")
+    .populate({
+      path: "cargos",
+      populate: {
+        path: "sender receiver",
+      },
+    })
+    .populate({
+      path: "waitingCargos",
+      populate: {
+        path: "sender receiver",
+      },
+    });
 }
 
 async function addPersonels(branchId, personelIds) {
@@ -29,7 +43,11 @@ async function findBranchByPersonelId(personelId) {
 }
 
 async function updateOne(id, updateBody) {
-  return await branchModel.updateOne({ _id: id }, updateBody);
+  return await branchModel
+    .findByIdAndUpdate(id, updateBody, { new: true })
+    .populate("personels", "-password")
+    .populate("cargos")
+    .populate("waitingCargos");
 }
 
 //update by personel id
@@ -44,6 +62,10 @@ async function removePersonelsFromAllBranches(excludeBranchId, personelIds) {
   );
 }
 
+async function deleteOne(id) {
+  return await branchModel.findByIdAndDelete(id);
+}
+
 module.exports = {
   create,
   find,
@@ -54,4 +76,5 @@ module.exports = {
   updateOne,
   updateByPersonelId,
   removePersonelsFromAllBranches,
+  deleteOne,
 };

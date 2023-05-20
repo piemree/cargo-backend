@@ -52,10 +52,10 @@ async function personelRegister(req, res) {
 }
 
 async function customerLogin(req, res) {
-  const { email, password, phone } = req.body;
+  const { email, password, phone, tcNo } = req.body;
   // find customer by email or phone
   const customer = await customerService.findOne({
-    $or: [{ email }, { phone }],
+    $or: [{ email }, { phone }, { tcNo }],
   });
 
   if (!customer) throw new AppError("Invalid credentials", 401);
