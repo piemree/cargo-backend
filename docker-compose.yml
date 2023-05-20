@@ -7,7 +7,7 @@ services:
     ports:
       - ${MONGO_PORT}:${MONGO_PORT}
     volumes:
-      - ${MONGO_VOLUME}:/data/db
+      - /data/db:/data/db
   node:
     build: .
     restart: always
