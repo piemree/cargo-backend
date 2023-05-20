@@ -41,7 +41,6 @@ async function addPersonels(req, res) {
 async function getBranchById(req, res) {
   const { branchId } = req.params;
   const branch = await branchService.findById(branchId);
-  if (!branch) throw new AppError("Branch not found", 404);
   res.status(200).json({
     success: true,
     data: branch,
