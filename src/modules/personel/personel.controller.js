@@ -41,6 +41,10 @@ async function assignVehicleToPersonel(req, res) {
 async function deletePersonel(req, res) {
   const { personelId } = req.params;
   const personel = await personelService.findById(personelId);
+  // if this is current user, throw error
+  if (personelId === req.user._id.toString()) {
+    throw new AppError("You can not delete yourself", 400);
+  }
   if (!personel) throw new AppError("Personel not found", 404);
   // delete personel from vehicle , branch
   if (personel.vehicle) {
