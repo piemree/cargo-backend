@@ -5,9 +5,9 @@ services:
     container_name: mongo
     restart: always
     ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+      - 27017:27017
     volumes:
-      - /data/db:/data/db
+      - dbdata:/data/db
   node:
     build: .
     restart: always
@@ -20,8 +20,10 @@ services:
       NODE_ENV: ${NODE_ENV}
       PORT: ${PORT}
       JWT_SECRET: ${JWT_SECRET}
-      SESSION_SECRET: ${SESSION_SECRET}
       DB_URL: ${DB_URL}
       DB_NAME: ${DB_NAME}
     depends_on:
       - mongo
+
+volumes:
+  dbdata:

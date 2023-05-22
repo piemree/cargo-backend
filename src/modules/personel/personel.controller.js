@@ -51,7 +51,7 @@ async function deletePersonel(req, res) {
     await vehicleService.updateOne(personel.vehicle, {
       driver: null,
     });
-  }
+  }               
   if (personel.branch) {
     await branchService.updateOne(personel.branch, {
       $pull: { personels: personel._id },

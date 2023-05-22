@@ -2,9 +2,13 @@ require("dotenv").config();
 const express = require("express");
 require("express-async-errors");
 const cors = require("cors");
+const path = require("path");
 const auth = require("./middlewares/auth");
 const config = require("../config");
 const app = express();
+
+app.set("views", path.join(__dirname, "./views"));
+app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

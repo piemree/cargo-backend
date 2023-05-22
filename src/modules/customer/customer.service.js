@@ -14,8 +14,16 @@ async function create(customer = {}) {
   return await customerModel.create(customer);
 }
 
+async function updateById(id, update) {
+  return await customerModel.findByIdAndUpdate(id, update, {
+    new: true,
+    runValidators: true,
+  });
+}
+
 module.exports = {
   findOne,
   findAll,
   create,
+  updateById,
 };

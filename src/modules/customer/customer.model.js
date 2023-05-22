@@ -11,7 +11,6 @@ const CustomerSchema = new Schema({
   password: {
     type: String,
     minlength: 6,
-    maxlength: 16,
   },
   name: {
     type: String,
@@ -25,15 +24,11 @@ const CustomerSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: 11,
-    maxlength: 11,
   },
   phone: {
     type: String,
     required: true,
     unique: true,
-    minlength: 10,
-    maxlength: 10,
   },
   role: {
     type: String,
@@ -51,12 +46,24 @@ const CustomerSchema = new Schema({
 });
 
 CustomerSchema.pre("save", async function (next) {
-  if (!this.isModified("password") || !this.password) {
+  if (!this.password) {
     this.password = this.tcNo;
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    return next();
   }
+  if (!this.isModified("password")) return next();
 
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+});
+
+CustomerSchema.pre("findOneAndUpdate", async function (next) {
+  if (!this._update.password) return next();
+
+  const salt = await bcrypt.genSalt(10);
+  this._update.password = await bcrypt.hash(this._update.password, salt);
+  next();
 });
 
 CustomerSchema.methods.matchPassword = async function (password) {

@@ -4,7 +4,6 @@ module.exports = {
       ? process.env.PORT
       : process.env.DEV_PORT,
   jwtSecret: process.env.JWT_SECRET,
-  sessionSecret: "process.env.SESSION_SECRET",
   database: {
     name: process.env.DB_NAME,
     url:
@@ -30,9 +29,23 @@ module.exports = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
+  mailOptions: {
+    host: "smtp.zoho.eu",
+    port: 465,
+    secure: true, // use SSL
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS,
+    },
+  },
+  appUrl: process.env.APP_URL,
   noAuthRoutes: [
     "/api/auth/customer/login",
     "/api/auth/customer/register",
     "/api/auth/personel/login",
+    "/api/auth/customerForgotPassword",
+    "/api/auth/customerResetPassword",
+    "/api/auth/personelForgotPassword",
+    "/api/auth/personelResetPassword",
   ],
 };

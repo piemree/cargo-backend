@@ -11,6 +11,7 @@ const PersonelSchema = new Schema({
   password: {
     type: String,
     minlength: 6,
+    required: true,
   },
   name: {
     type: String,
@@ -58,6 +59,14 @@ PersonelSchema.pre("save", async function (next) {
 
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+});
+
+PersonelSchema.pre("findOneAndUpdate", async function (next) {
+  if (!this._update.password) return next();
+
+  const salt = await bcrypt.genSalt(10);
+  this._update.password = await bcrypt.hash(this._update.password, salt);
+  next();
 });
 
 PersonelSchema.methods.matchPassword = async function (password) {

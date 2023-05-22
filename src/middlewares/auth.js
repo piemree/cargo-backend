@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports = async function (req, res, next) {
   const noAuthRoutes = config.noAuthRoutes;
   const pathname = req._parsedUrl.pathname;
+  console.log(pathname);
   const isNoAuthRoute = noAuthRoutes.includes(pathname);
   if (isNoAuthRoute) return next();
   // get bearer token from header
