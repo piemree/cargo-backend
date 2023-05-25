@@ -18,7 +18,7 @@ router.post(
 
 router.get(
   "/getAllBranches",
-  allowedRoles([roles.admin]),
+  allowedRoles([roles.admin, roles.branchPersonel]),
   branchController.getAllBranches
 );
 
@@ -42,5 +42,31 @@ router.delete(
   branchController.deleteBranch
 );
 
-//test
+// get my branch cargos
+router.get(
+  "/getMyBranchCargos",
+  allowedRoles([roles.branchPersonel]),
+  branchController.getMyBranchCargos
+);
+
+//getMyBranchCargosByTc
+router.get(
+  "/getMyBranchCargosByTc/:tcNo",
+  allowedRoles([roles.branchPersonel]),
+  branchController.getMyBranchCargosByTc
+);
+
+// get delived cargos
+router.get(
+  "/getMyBranchDeliveredCargos",
+  allowedRoles([roles.branchPersonel]),
+  branchController.getMyBranchDeliveredCargos
+);
+
+// get my vehicle cargos branch list
+router.get(
+  "/getMyVehicleCargosBranchList",
+  allowedRoles([roles.transportPersonel]),
+  branchController.getMyVehicleCargosBranchList
+);
 module.exports = router;

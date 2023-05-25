@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const AppError = require("../../error/AppError");
 
 const Schema = mongoose.Schema;
 

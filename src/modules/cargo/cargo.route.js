@@ -44,5 +44,22 @@ router.post(
   allowedRoles([roles.branchPersonel]),
   cargoController.giveCargoToCustomer
 );
+router.get(
+  "/getMyRecievedCargos",
+  allowedRoles([roles.customer]),
+  cargoController.getMyRecievedCargos
+);
+router.get(
+  "/getMyVehicleCargos",
+  allowedRoles([roles.transportPersonel]),
+  cargoController.getMyVehicleCargos
+);
+
+router.get(
+  "/getMyVehicleCurrentCargos",
+  allowedRoles([roles.transportPersonel]),
+  cargoController.getMyVehicleCurrentCargos
+);
+
 
 module.exports = router;

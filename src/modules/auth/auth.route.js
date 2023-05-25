@@ -45,6 +45,17 @@ router.get("/personelResetPassword", authController.personelResetPasswordView);
 // reset password
 router.post("/personelResetPassword", authController.personelResetPassword);
 
-router.get("/me", authController.getMe);
+router.get(
+  "/customer/getProfile",
+  allowedRoles([roles.customer]),
+  authController.getProfile
+);
+
+//update customer profile
+router.post(
+  "/updateCustomer",
+  allowedRoles([roles.customer]),
+  authController.updateCustomer
+);
 
 module.exports = router;

@@ -1,10 +1,12 @@
 const branchService = require("./branch.service");
 const personelService = require("../personel/personel.service");
+const cargoService = require("../cargo/cargo.service");
 
 async function createBranch(req, res) {
   const branch = req.body;
 
   const createdBranch = await branchService.create(branch);
+
   res.status(201).json({
     success: true,
     data: createdBranch,
@@ -82,6 +84,64 @@ async function deleteBranch(req, res) {
   });
 }
 
+async function getMyBranchCargos(req, res) {
+  console.log(req.user);
+  const cargos = await cargoService.find({
+    registerBranch: req.user?.branch,
+    status: "beklemede",
+  });
+
+  res.status(200).json({
+    success: true,
+    data: cargos,
+  });
+}
+
+// get cargo in branch by uesr tcNo
+async function getMyBranchCargosByTc(req, res) {
+  const tcNo = req.params.tcNo;
+  const cargos = await cargoService.find({
+    targetBranch: req.user?.branch,
+    status: "subede",
+  });
+  // filter cargos by tcNo
+  const filteredCargos = cargos.filter(
+    (cargo) => cargo?.receiver?.tcNo === tcNo
+  );
+
+  res.status(200).json({
+    success: true,
+    data: filteredCargos,
+  });
+}
+
+async function getMyBranchDeliveredCargos(req, res) {
+  const branch = req.user.branch;
+  const cargos = await cargoService.find({
+    targetBranch: branch,
+    wasDelivered: true,
+  });
+  res.status(200).json({
+    success: true,
+    data: cargos,
+  });
+}
+
+async function getMyVehicleCargosBranchList(req, res) {
+  const vehicle = req.user.vehicle
+  const cargos = await cargoService.find({
+    vehicle: vehicle,
+    status: "yolda",
+  });
+  const branchList = cargos.map(cargo => cargo.targetBranch)
+  const branchSet = new Set(branchList)
+ 
+  res.status(200).json({
+    success: true,
+    data: Array.from(branchSet),
+  });
+}
+
 module.exports = {
   createBranch,
   getAllBranches,
@@ -89,4 +149,8 @@ module.exports = {
   getBranchById,
   updateBranch,
   deleteBranch,
+  getMyBranchCargos,
+  getMyBranchCargosByTc,
+  getMyBranchDeliveredCargos,
+  getMyVehicleCargosBranchList
 };

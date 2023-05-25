@@ -3,6 +3,7 @@ const AppError = require("../../error/AppError");
 const personelService = require("../personel/personel.service");
 const customerService = require("../customer/customer.service");
 const branchService = require("../branch/branch.service");
+const vehicleService = require("../vehicle/vehicle.service");
 const authService = require("./auth.service");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -55,10 +56,10 @@ async function personelRegister(req, res) {
 }
 
 async function customerLogin(req, res) {
-  const { email, password, phone, tcNo } = req.body;
+  const { email, password, tcNo } = req.body;
   // find customer by email or phone
   const customer = await customerService.findOne({
-    $or: [{ email }, { phone }, { tcNo }],
+    $or: [{ email }, { tcNo }],
   });
 
   if (!customer) throw new AppError("Invalid credentials", 401);
@@ -91,7 +92,7 @@ async function customerRegister(req, res) {
   });
 }
 
-async function getMe(req, res) {
+async function getProfile(req, res) {
   const customer = await customerService.findOne({ _id: req.user._id });
   if (!customer) throw new AppError("Invalid credentials", 401);
   customer.password = undefined;
@@ -247,12 +248,25 @@ async function personelResetPassword(req, res) {
   }
 }
 
+async function updateCustomer(req, res) {
+  const { tcNo, email, phone } = req.body;
+  const customer = await customerService.updateById(req.user._id, {
+    email,
+    phone,
+    tcNo,
+  });
+  res.status(200).json({
+    success: true,
+    data: customer,
+  });
+}
+
 module.exports = {
   personelLogin,
   personelRegister,
   customerLogin,
   customerRegister,
-  getMe,
+  getProfile,
   customerForgotPassword,
   customerForgotPasswordView,
   customerResetPasswordView,
@@ -261,4 +275,5 @@ module.exports = {
   personelForgotPasswordView,
   personelResetPasswordView,
   personelResetPassword,
+  updateCustomer,
 };
