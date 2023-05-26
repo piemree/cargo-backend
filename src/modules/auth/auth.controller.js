@@ -232,11 +232,9 @@ async function personelResetPassword(req, res) {
     const personel = await personelService.findOne({ _id: decoded._id });
     if (!personel)
       return res.render("personelResetPassword", { error: "Invalid token" });
-    const salt = await bcrypt.genSalt(10);
-    const newpassword = await bcrypt.hash(password, salt);
 
     await personelService.findByIdAndUpdate(decoded._id, {
-      password: newpassword,
+      password,
     });
 
     res
