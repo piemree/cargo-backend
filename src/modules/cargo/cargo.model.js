@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const branchModel = require("../branch/branch.model");
-const AppError = require("../../error/AppError");
 const Schema = mongoose.Schema;
 
 const CargoSchema = new Schema({

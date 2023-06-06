@@ -29,12 +29,7 @@ const PersonelSchema = new Schema({
   role: {
     type: String,
     required: true,
-    enum: [
-      "branchPersonel",
-      "transportPersonel",
-      "customerServicePersonel",
-      "admin",
-    ],
+    enum: ["branchPersonel","transportPersonel","customerServicePersonel","admin"],
   },
   vehicle: {
     type: mongoose.Schema.Types.ObjectId,
@@ -43,6 +38,10 @@ const PersonelSchema = new Schema({
   branch: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Branch",
+  },
+  ticket: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Ticket",
   },
   createdAt: {
     type: Date,

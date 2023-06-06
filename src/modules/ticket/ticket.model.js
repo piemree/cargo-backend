@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-const { MessageSchema } = require("../message/message.model");
 const Schema = mongoose.Schema;
 
 const TicketSchema = new Schema({
   personel: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Personel",
-    required: true,
+    required: false,
   },
   customer: {
     type: mongoose.Schema.Types.ObjectId,
@@ -18,13 +17,34 @@ const TicketSchema = new Schema({
     ref: "Cargo",
     required: false,
   },
+  status: {
+    type: String,
+    enum: ["open", "closed"],
+    default: "open",
+  },
+  title: {
+    type: String,
+    required: true,
+  },
   subject: {
     type: String,
     required: true,
   },
   messages: [
     {
-      type: MessageSchema,
+      sender: {
+        type: String,
+        enum: ["customer", "customerServicePersonel"],
+        required: true,
+      },
+      message: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
   createdAt: {
