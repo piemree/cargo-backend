@@ -5,7 +5,7 @@ services:
     container_name: mongo
     restart: always
     ports:
-      - 27127:27017
+      - 2717:2717
     volumes:
       - dbdata:/data/db
   node:
