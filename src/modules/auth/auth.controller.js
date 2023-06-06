@@ -186,7 +186,7 @@ async function personelForgotPassword(req, res) {
       email: personel.email,
       _id: personel._id,
     };
-
+//test
     const token = jwt.sign(payload, config.jwtSecret, { expiresIn: "5m" });
 
     const resetPasswordLink = `${config.appUrl}/api/auth/personelResetPassword?token=${token}`;
