@@ -16,6 +16,7 @@ services:
     # add logs volume
     volumes:
       - ./logs:/usr/src/app/logs
+    network_mode: host
     environment:
       NODE_ENV: ${NODE_ENV}
       PORT: ${PORT}
