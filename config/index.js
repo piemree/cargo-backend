@@ -19,7 +19,6 @@ module.exports = {
     customer: "customer",
   },
   jwtOptions: {
-    expiresIn: "1d",
   },
   corsOptions: {
     origin: "*",
