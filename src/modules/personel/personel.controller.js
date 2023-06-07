@@ -17,6 +17,16 @@ async function getAllPersonels(req, res) {
 
 async function assignVehicleToPersonel(req, res) {
   const { personelId, vehicleId } = req.body;
+  //find personel vehicle if exists
+  const vehicle = await vehicleService.findOne({
+    driver: personelId,
+  });
+  // if vehicle exists, remove driver from vehicle
+  if (vehicle) {
+    await vehicleService.updateOne(vehicle._id, {
+      driver: null,
+    });
+  }
   const updatePersonelRequest = personelService.updateOne(
     {
       _id: personelId,
@@ -51,7 +61,7 @@ async function deletePersonel(req, res) {
     await vehicleService.updateOne(personel.vehicle, {
       driver: null,
     });
-  }               
+  }
   if (personel.branch) {
     await branchService.updateOne(personel.branch, {
       $pull: { personels: personel._id },
